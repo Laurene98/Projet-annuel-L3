@@ -1,0 +1,304 @@
+WITH Ada.Text_IO,Ada.Integer_Text_IO, Gestion_Baby_Sitter, Gestion_Famille, Gestion_Garde, Outils, Initialisation;
+USE Ada.Text_IO,Ada.Integer_Text_IO, Gestion_Baby_Sitter, Gestion_Famille, Gestion_Garde, Outils, Initialisation;
+
+
+PROCEDURE Principal IS
+   Mon_Choix,Visual,Bab,Fam,Ins,Sauv,K : Integer := 0;
+   Jour : T_Semaine := Lundi;
+   Liste : T_Pteur := NULL;
+   A,Pointeur_Fam : T_Arbre := NULL;
+   Bs : T_Baby_Sitter;
+   Famille : T_Famille;
+   Fac : Integer;
+BEGIN
+   Init_Bs(Liste);
+   Tri(Liste);
+   Init_Famille(A);
+
+jour:= Dimanche; --test
+
+   Put_Line (" Le projet Ada : DONG Laurene et DEWITTE Lisa");
+   New_Line;
+
+   LOOP
+      Put ("Nous sommes ");
+      Put(T_Semaine'Image(Jour));
+      New_Line;
+      New_Line;
+
+      IF Jour IN Mardi..Dimanche THEN
+         Put_Line ("  -- Factures de la veille --");
+         New_Line;
+         Visu_Facture_Veille(Liste);
+         New_Line;
+      END IF;
+
+      IF Jour IN Lundi..Samedi THEN
+         Put_Line ("  -- Gardes prevues aujourd'hui --");
+         New_Line;
+         Visu_Garde_Jour(Liste,Jour);
+         New_Line;
+
+         -- calcul des factures
+         Calcul_Facture(Liste,A,Jour);
+      END IF;
+
+      IF Jour = Dimanche THEN
+         Put_Line ("  -- Montants dus aux baby-sitters --");
+         New_Line;
+         Visu_Facture_Bs(Liste);
+         New_Line;
+         Put_Line ("  -- Montants dus par les familles --");
+         New_Line;
+         Visu_Facture_Fam(A, Liste, Fac);
+         New_Line;
+         Put_Line ("  -- Depart de babysitters --");
+         Supp_Bs (Liste);
+         New_Line;
+      END IF;
+
+      IF Jour = Lundi THEN
+         Compte_Creneaux(Liste);
+      END IF;
+
+
+      Put_Line ("  ----- Menu principal -----");
+      Put_Line (" 0 : Passer au jour suivant");
+      Put_Line (" 1 : Visualisation des donnees");
+      Put_Line (" 2 : Gestion des babysitters");
+      Put_Line (" 3 : Gestion des familles");
+      Put_Line (" 4 : Gestion de garde");
+      Put_Line (" 5 : Sauvegarde et restauration");
+      New_Line;
+      Put(" Saisissez votre choix : ");
+      Ctrl_Entier(Mon_Choix);
+      New_Line;
+      New_Line;
+
+      -------------------------------- Case MENU PRINCIPAL --------------------------------------
+
+      CASE Mon_Choix IS
+
+         --------------------------------- Passage au jour suivant --------------------
+         WHEN 0 =>
+            Jour_Suiv(Jour);
+            IF Jour = Lundi THEN
+               Maj_Planning(Liste);
+               Put_Line("Les plannings ont ete mis a jour"); New_Line;
+            END IF;
+
+         --------------------------------- Visualisation des donnees --------------------
+         WHEN 1 => -- Visualisation des donnees
+
+            LOOP
+               Put_Line ("  ----- Visualisation des donnees -----");
+               New_Line;
+               Put_Line (" 1 : Liste des babysitters");
+               Put_Line (" 2 : Liste des familles");
+               Put_Line (" 3 : Planning des babysitters de cette semaine");
+               Put_Line (" 4 : Planning des babysitters de la semaine prochaine");
+               Put_Line (" 5 : Planning d'un(e) baby-sitter donnee");
+               Put_Line (" 6 : Gardes prevues d'une famille donnee");
+               Put_Line (" 0 : Retour");
+               New_Line;
+
+               Put(" Saissisez votre choix : ");
+               Ctrl_Entier(Visual);
+
+               CASE Visual IS
+                  WHEN 1 => -- Liste de tous les babysitters
+                     Put_Line (" Voici la liste des babysitters:");
+                     New_Line;
+                     Visu_Bs(Liste);
+                     New_Line;
+                     New_Line;
+                  WHEN 2 => -- Liste de tous les familles
+                     Put_Line (" Voici la liste des familles");
+                     New_Line;
+                     Visu_Fam(A);
+                     New_Line;
+                     New_Line;
+                  WHEN 3 => -- Planning des babysitters de cette semaine
+                     Put_Line (" Voici le planning de chaque babysitters cette semaine:");
+                     New_Line;
+                     Visu_P1(Liste);
+                     New_Line;
+                     New_Line;
+                  WHEN 4 => -- Planning des babysitters de la semaine a venir
+                     Put_Line (" Voici le planning de chaque babysitters la semaine prochaine:");
+                     New_Line;
+                     Visu_P2(Liste);
+                     New_Line;
+                     New_Line;
+                  WHEN 5 => -- Planning d'une baby-sitter donnee
+                     Put_Line (" Planning d'une baby-sitter donnee :");
+                     New_Line;
+                     Visu_Planning_Bs(Liste);
+                     New_Line;
+                     New_Line;
+                  WHEN 6 => -- Gardes prevues d'une famille donnee
+                     Put_Line (" Gardes prevues d'une famille donnee :");
+                     New_Line;
+                     Visu_Garde(Liste);
+                     New_Line;
+                     New_Line;
+                  WHEN 0 =>
+                     EXIT;
+                  WHEN OTHERS =>
+                     Put_Line("Votre choix ne fait pas partie des options, recommencez");
+               END CASE;
+            END LOOP;
+            New_Line;
+            New_Line;
+
+         --------------------------------- Gestion des babysitters ---------------------------------
+
+         WHEN 2 => -- Gestion des babysitters
+
+            LOOP
+               Put_Line ("  ----- Gestion des babysitters -----");
+               New_Line;
+               Put_Line (" 1 : Inscription de babysitters");
+               Put_Line (" 2 : Demande de depart");
+               Put_Line (" 0 : Sortir");
+               New_Line;
+
+               Put(" Saissisez votre choix : ");
+               Ctrl_Entier(Bab);
+
+               CASE Bab IS
+                  WHEN 1 => -- Inscription de babysitters
+                     IF Jour = Dimanche THEN
+                        Ajout_Bs(Bs,Liste);
+                        Tri(Liste);
+                     ELSE
+                        Put_Line("Les inscriptions se font uniquement le dimanche.");
+                     END IF;
+                     New_Line;
+                     New_Line;
+                  WHEN 2 => -- Demande de départ
+                     Demande_Depart_Bs(Liste, Jour);
+                  WHEN 0 =>
+                     EXIT;
+                  WHEN OTHERS =>
+                     Put_Line("Votre choix ne fait pas partie des options, recommencez");
+               END CASE;
+            END LOOP;
+            New_Line;
+            New_Line;
+
+         --------------------------------- Gestion des familles ---------------------------------
+
+         WHEN 3 => -- Gestion des familles
+
+            LOOP
+               Put_Line ("  ----- Gestion des familles -----");
+               New_Line;
+               Put_Line (" 1 : Inscription des familles");
+               Put_Line (" 2 : Desinscription des familles");
+               Put_Line (" 0 : Sortir");
+               New_Line;
+
+               Put(" Saissisez votre choix : ");
+               Ctrl_Entier(Fam);
+
+               CASE Fam IS
+                  WHEN 1 => -- Inscription des familles
+                     New_Fam(Famille,K);
+                     Insert_Fam(Famille,K,A);
+                     New_Line;
+                     New_Line;
+                  WHEN 2 => -- Desinscription des familles
+                     -- Put("Montant de la facture : ");
+                     Supp_Fam(Liste,A,Jour,Pointeur_Fam);
+                     Put("La famille "); Put(Pointeur_Fam.Famille.Nom); Put_Line("a bien ete desincrit");
+                     Put("Montant du aux baby-sitters : ");
+                     Put(Pointeur_Fam.Famille.Facture,4); Put_Line(" euros");
+                     New_Line;
+                     New_Line;
+                  WHEN 0 =>
+                     EXIT;
+                  WHEN OTHERS =>
+                     Put_Line("Votre choix ne fait pas partie des options, recommencez");
+               END CASE;
+            END LOOP;
+            New_Line;
+            New_Line;
+
+         --------------------------------- Inscription pour la garde ---------------------------------
+
+         WHEN 4 =>
+            NULL;-- Inscription pour la garde
+
+            LOOP
+               Put_Line ("  ----- Inscription pour la garde -----");
+               New_Line;
+               Put_Line (" 1 : Ajouter une garde");
+               Put_Line (" 2 : Annuler une garde");
+               Put_Line (" 0 : Sortir");
+               New_Line;
+
+               Put(" Saissisez votre choix : ");
+               Ctrl_Entier(Ins);
+
+               CASE Ins IS
+                  WHEN 1 => -- Ajouter garde
+                     Demande_Garde(Liste,A);
+                     New_Line;
+                     New_Line;
+                  WHEN 2 => -- Annuler une garde
+                     Annule_Garde(Liste,A,Jour);
+                     New_Line;
+                     New_Line;
+                  WHEN 0 =>
+                     EXIT;
+                  WHEN OTHERS =>
+                     Put_Line("Votre choix ne fait pas partie des options, recommencez");
+               END CASE;
+            END LOOP;
+            New_Line;
+            New_Line;
+
+         -------------------------------- Sauvegarde et Restauration -------------------------------------------
+
+         WHEN 5 => -- Sauvegarde et restauration");
+            LOOP
+               Put_Line ("  ----- Statistiques -----");
+               New_Line;
+               Put_Line (" 1 : Sauvegarder");
+               Put_Line (" 2 : Restaurer");
+               Put_Line (" 0 : Sortir");
+               New_Line;
+
+               Put_Line ("Saissisez votre choix : ");
+               Ctrl_Entier(Sauv);
+
+               CASE Sauv IS
+                  WHEN 1 => -- Sauvegarder
+                     NULL;
+                     New_Line;
+                     New_Line;
+                  WHEN 2 => -- Restaurer
+                     NULL;
+                     New_Line;
+                     New_Line;
+                  WHEN 0 =>
+                     EXIT;
+                  WHEN OTHERS =>
+                     Put_Line("Votre choix ne fait pas partie des options, recommencez");
+               END CASE;
+            END LOOP;
+            New_Line;
+            New_Line;
+
+         -------------------------------------- Retour menu principal ------------------------------------------
+
+         WHEN OTHERS =>
+            NULL;
+
+      END CASE;
+
+   END LOOP;
+   -- Put_Line (" Merci de votre visite!!!");
+END Principal;
+

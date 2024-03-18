@@ -1,0 +1,11 @@
+WITH Ada.Text_IO,Ada.Integer_Text_IO, outils,Ada.Characters.Handling,Gestion_KDO,Gestion_Activites,Gestion_Elfes,Gestion_Locataire;
+USE Ada.Text_IO,Ada.Integer_Text_IO, outils,Ada.Characters.Handling,Gestion_KDO,Gestion_Activites,Gestion_Elfes,Gestion_Locataire;
+
+PACKAGE Outils IS
+
+   SUBTYPE T_Mot IS String (1..30);
+   TYPE T_Semaine IS (Lundi, Mardi, Mercredi, Jeudi, Vendredi,Samedi,Dimanche);
+
+   PROCEDURE Gestion_Mots (Mot : OUT T_Mot);
+
+END Outils;

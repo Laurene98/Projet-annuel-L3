@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Rejoignez-nous</title>
+    <link rel="stylesheet" type="text/css" href="add_service.css"/>
+  </head>
+  <body>
+    <!----------------- entête haut de page ----------------->
+    <iframe src="../header/header.html" width="100%" height="180vw" frameborder="0"></iframe>
+     
+    <!----------------- Formulaire Ajout de Service(début)----------------->  
+    <h1>Rejoignez-nous</h1>
+    <div class="signup_form">
+      <form action="add_service.php" method="post">
+        <!---------Nom du service-------->  
+        <label for="NomS"> Nom du service : </label>  
+        <input type="text" name="NomS" id="NomS" maxlength="100" required>
+        <br>
+        <!---------Nom du contact-------->  
+        <label for="NomC"> Nom du contact: </label>  
+        <input type="text" name="NomC" id="NomC" maxlength="100" required>
+        <br>
+        <!---------Prénom du contact-------->  
+        <label for="PrenomC">Prénom du contact : </label>  
+        <input type="text" name="PrenomC" id="PrenomC" maxlength="100" required>
+        <br>
+        <!---------Mail du contact-------->  
+        <label for="EmailC"> Mail : </label>  
+        <input type="mail" name="EmailC" id="EmailC" maxlength="100" required>
+        <br>
+        <!---------Prix-------->  
+        <label for="Capacite">Capacité : </label>
+        <input type="number" id="Capacite" name="Capacite" min="0" step="1" required>
+        <br>
+        <!--------- Catégorie du service (en liste déroulante)------->  
+        <label for="CategorieS">Catégorie du service : </label>
+        <select name="CategorieS" id="CategorieS">
+          <option value="Non_specifie">Non spécifié</option>
+          <option value="Traiteur">Traiteur</option>
+          <option value="Salle_de_fete">Salle de fête</option>
+          <option value="Transport">Transport</option>
+          <option value="DJ">DJ</option>
+          <option value="Animateur">Animateur</option>
+          <option value="Photographe">Photographe</option>
+          <option value="Serveur">Serveur</option>
+          <option value="Autres">Autres</option>
+        </select>
+        <br>
+        <!---------Localisation (ville)-------->  
+        <label for="Localisation"> Localisation (ville): </label>  
+        <input type="text" name="Localisation" id="Localisation" maxlength="100" required>
+        <br>
+        <!---------Transport (checkbox)------->
+        <label for="Type_Transport">Quel type de transport proposez-vous ? </label> 
+        <select name="Type_Transport" id="Type_Transport">
+          <option value="Non_concerne">Non Concerné</option>
+          <option value="Voiture">Voiture</option>
+          <option value="Taxi">Taxi</option>
+          <option value="Bus">Bus</option>
+          <option value="Train">Train</option>
+          <option value="Autres">Autres</option>
+        </select>
+        <br>
+        <!---------Gastronomie (radio)------->
+        <label for="Gastronomie">Gastronomie : </label>
+        <select name="Gastronomie" id="Gastronomie">
+          <option value="Non_specifie">Non spécifié</option>
+          <option value="Francais">Français</option>
+          <option value="Mexicain">Mexicain</option>
+          <option value="Chinois">Chinois</option>
+          <option value="Italien">Italien</option>
+          <option value="Autres">Autres</option>
+        </select>
+        <br>
+        <!---------Régime (en liste déroulante)------->  
+        <label for="Regime">Regime : </label>
+        <select name="Regime" id="Regime">
+          <option value="Aucun">Aucun</option>
+          <option value="Vegetalien">Végétalien</option>
+          <option value="Vegetarien">Végétarien</option>
+          <option value="Halal">Halal</option>
+          <option value="Divers">Divers</option>
+          <option value="Autres">Autres</option>
+        </select>
+        <br>
+        <!---------Parking (radio)------->
+        <label for="Parking">Parking ? </label>
+        <select name="Parking" id="Parking">
+          <option value=0>Non</option>
+          <option value=1>Oui</option>
+        </select>
+        <br>
+        <!---------Enregistrement------->
+        <input type="submit" value="Enregistrer">
+      </form>            
+  </div>
+    <!----------------- Formulaire Ajout de service (fin)-------------------> 
+    </body>
+</html>

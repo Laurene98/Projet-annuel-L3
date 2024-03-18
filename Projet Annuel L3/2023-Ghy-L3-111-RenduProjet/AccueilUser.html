@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Idées de cadeaux</title>
+        <link rel="stylesheet" href="CSS/AccueilUser.css">
+        <link rel="stylesheet" href="Accueil.html">
+        <link rel="stylesheet" href="connexionBDD.html">
+        <link rel="stylesheet" href="Inscription.html">
+        <title> Page d'accueil</title>
+    </head>
+<body>
+    <!--l'image d'arrière plan-->
+    <div style="position: relative; height:400px">
+        <div class="image"  style="position: relative; z-index:1">
+            <img src="img/Cadeaux.png" width="1200px">
+        </div>
+    </div>
+      <!--Le header-->
+    <header role="header">
+            <div class="m-center">
+                <h1 class="logo">Idées de cadeaux</h1>
+            </div>
+            <div class="m-left">
+                <a href="PropoCDO1.php" class="m-link1"> Suggérer un cadeau</a>
+                <a href="Espace_perso.html" class="m-link2">Mon espace</a>
+            </div>
+            <!--Barre de recherche-->
+            <div class="Barre"><input type="search" placeholder="Anniversaire" ><div style=" position: relative;"></div>
+    </header> 
+        <!--Le texte de la page d'accueil-->
+        <div class="texte" style="position:absolute;top:150px;left:50px ;width: 400px; height:150px; z-index:2;font-size:80%; border: 3px solid black; padding: 15px;">
+            <center><h1 class="titre_1">Vous ne savez pas quoi offrir ?</h1></center>
+            <center><h1 class="titre_2">Vous êtes au bon endroit !</h1></center>
+            <!--Le bouton pour aller vers le questionnaire-->
+            <div class="bouton_texte"style="position:absolute; top: 130px;text-align:center; width: 400px;color: #000;z-index:2">
+             <button><a href="QuestionnaireQ1.php">Je cherche un cadeau</a></button>
+            </div> 
+        </div>      
+</body> 
+</html>

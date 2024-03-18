@@ -1,0 +1,15 @@
+WITH Ada.Text_IO,ADA.Integer_Text_IO,ADA.Sequential_IO,Gestion_Igloo;
+USE Ada.Text_IO,ADA.Integer_Text_IO,Gestion_Igloo;
+
+PACKAGE Gestion_Fichier IS
+   PACKAGE P_T_Registre_Igloo IS NEW ADA.Sequential_Io(T_Igloo);
+   USE P_T_Registre_Igloo;
+
+   PROCEDURE Enregistrer_Reg_Igloo(Reg_Igloo : OUT T_Igloo);
+   PROCEDURE Restaurer_Reg_Igloo(Reg_Igloo : OUT T_Igloo);
+
+   END Gestion_Fichier;
+
+
+
+

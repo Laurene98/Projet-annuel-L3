@@ -1,0 +1,107 @@
+body {
+	background-color: #ffffff;
+	font-family: Arial, sans-serif;
+}
+
+.login-form {
+	background-color: #ffffff;
+	margin-left: 15vw;
+	margin-top: 10%;
+	width: 30vw;
+	padding: 1.5vw;
+	text-align: center;
+	display: inline-block;
+}
+
+h1 {
+	margin-top: 0;
+	font-size: 4vw;
+	text-align: center;
+}
+
+input[type="text"],
+input[type="password"] {
+	border: 0.1vw solid #c5c5c5;
+	border-radius: 1.5vw;
+	box-sizing: border-box;
+	font-size: 2vw;
+	padding: 1.5vw;
+	margin: 0.5vh;
+	width: 100%;
+}
+
+.remember-forgot {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: 10px 0;
+}
+
+.remember-forgot a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+input[type="checkbox"] {
+	margin-right: 5px;
+	appearance: none;
+  	background-color: #ffffff;
+  	margin: 0;
+  	font: inherit;
+	cursor: pointer;
+  	width: 1.2em;
+  	height: 1.2em;
+  	border: 0.15em solid black;
+  	border-radius: 1em;
+  	transform: translateY(0.18em);
+}
+
+input[type="checkbox"]:checked{
+	transform-origin: bottom left;
+	background-color: black;
+	clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%)
+}
+
+label[for="remember-me"] {
+	font-size: 1.5vw;
+}
+
+input[type="submit"] {
+	color: rgb(0, 0, 0); /* couleur du texte */
+	border: none; /* suppression de la bordure */
+	padding: 1.6vw; /* marge intérieure */
+	width: 100%;
+	text-align: center; /* centrage du texte */
+	text-decoration: none; /* suppression des décorations de lien */
+	display: inline-block; /* affichage en ligne */
+	font-size: 2.4vw; /* taille de la police */
+	cursor: pointer; /* curseur de la souris */
+	border-radius: 1.5vw; /* arrondi des coins */
+	font-weight: bold
+  }
+
+  .login-form input[type="submit"] {
+	background-color: #dd6baa;
+  }
+
+  .login-form input[type="submit"]:hover {
+    background-color: #ad5e8b;
+  }
+
+  .signup-redirect input[type="submit"] {
+	background-color: rgb(216, 147, 170);
+  }
+
+  .signup-redirect input[type="submit"]:hover {
+    background-color: rgb(175, 120, 138);
+  }
+  
+  .signup-redirect {
+	background-color: #ffffff;
+	margin-right: 10vw;
+	width: 30vw;
+	text-align: center;
+	display: inline-block;
+	position: relative;
+}

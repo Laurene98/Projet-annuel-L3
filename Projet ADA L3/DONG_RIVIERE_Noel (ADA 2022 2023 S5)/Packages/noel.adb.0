@@ -1,0 +1,129 @@
+--WITH Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Outils, Gestion_Activites, Initialisation, Gestion_Locataire, Gestion_Kdo, Gestion_Igloo, Gestion Elfes;
+--USE Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Outils, Gestion_Activites, Initialisation, Gestion_Locataire, Gestion_Kdo, Gestion_Igloo, Gestion Elfes;
+
+--WITH Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Outils, Gestion_Activites;
+--USE Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Outils, Gestion_Activites;
+
+WITH Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Aleatoire, Gestion_KDO;
+USE Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Aleatoire, Gestion_KDO;
+
+PROCEDURE Noel IS
+   Mon_choix,choix_igloo:integer;
+   Nbr_Stock: T_Gestion_KDO;
+--   KDO: T_KDO;
+
+--   Bilan_KDO: T_Gestion_KDO;
+--   KDO_tirage: T_KDO;
+
+BEGIN
+   Nbr_Place: T_Gestion_Activite;
+
+--   Stat_KDO(KDO_Tirage, Bilan_KDO);
+
+--   Init_Stock(Nbr_Stock);
+
+--   New_Line;
+--   Affichage_Stock(Nbr_Stock);
+--   New_Line;
+--   Reassort (Nbr_Stock);
+--   New_Line;
+--   Affichage_Stock(Nbr_Stock);
+--   New_Line;
+--   Distribution_KDO (KDO_Tirage, Nbr_Stock);
+--   New_Line;
+--   Affic_Stat_KDO(Bilan_KDO);
+
+      Put_Line ("le projet Ada:DONG Laurene et RIVIERE Jade"); New_Line; LOOP
+      Put_Line ("1:Visualisation des donnees de depart");
+      Put_Line ("2:Voir la gestion Igloo");
+      Put_Line ("3:Voir la gestion des activites");
+      Put_Line ("4:Voir la gesstion des locataires");
+      Put_Line ("5:Voir la gestion cadeaux");
+      Put_line ("6: voir les statistiques ");
+      Put_Line ("0:Sortir");
+      Put ("votre choix=>  ");Get(Mon_Choix);New_Line;
+
+      CASE Mon_Choix IS
+
+         WHEN 1=> Put_Line("la liste de tous les locataires"); New_Line;--rajouter liste locataires(a finir)
+            Put_Line("liste de tous les igloos"); New_Line;--rajouter liste igloos (a finir)
+            Put_Line("la liste de tous les activites avec les places disponibles"); New_Line;
+            Affichage_Dispo (Nbr_Place); New_Line;
+            Put_Line("les stocks des cadeaux"); New_Line;
+            Affichage_Stock(Nbr_Stock);New_Line;
+
+         WHEN 2=> Put_Line("vous etes dans la gestion igloo, vous pouvez: ")
+            Put_Line("1:effecteur la creation d'un igloo");
+            Put_Line("2:voir l'affichage de tous les igloos");
+            Put_Line("3:effectuer la reservation d'un igloo");
+            Put("votre choix=> ");
+            Get(Choix_Igloo); New_Line;
+
+            CASE Choix_Igloo IS
+               WHEN 1=>--mettre procedure(a valider)
+               WHEN 2=>--rajouter liste igloos (a finir)
+               WHEN 3=>--a completer
+               WHEN 0=>EXIT;
+               WHEN OTHERS=>EXIT;
+            END CASE;
+          When 3=> Put_line("
+
+
+
+
+
+
+
+
+
+
+
+
+END Noel;
+
+
+
+
+
+
+
+
+
+--BEGIN
+
+--   Disponibilite (Nbr_place);
+--   Put ("les disponibilites sont: "); New_Line;
+
+--   Affichage_dispo (Nbr_Place);
+
+
+--END Noel;
+
+
+
+
+
+
+--   Init_Stock (KDO,MonStock);
+--   Put (MonStock); New_Line;
+--   Affichage_Stock (KDO,MonStock);
+
+
+--   Gestion_Mots (Mot);
+--   Put ("votre nom est "); Put (Mot);
+--BEGIN
+--   Disponibilite (dispo);
+
+
+--   Mot: T_Mot;
+--   K : Natural;
+--   S : String (1..31);
+--   MonStock : T_Gestion_KDO;
+--   KDO:T_KDO;
+
+
+
+
+
+
+

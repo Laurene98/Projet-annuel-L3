@@ -1,0 +1,71 @@
+WITH Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Outils,Gestion_activites;
+Use Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Outils,Gestion_activites;
+
+PACKAGE BODY Gestion_Activites IS
+
+
+      PROCEDURE Disponibilite (Dispo: IN OUT T_Gestion_Activite) IS
+         Nbr_Place : Integer;
+
+      BEGIN
+         Nbr_Place:=8;
+
+         FOR I IN T_Semaine LOOP
+            FOR J IN T_Activite LOOP
+               Nbr_Place(I,J):= 8;
+               IF I=
+
+            END LOOP;
+         END LOOP;
+
+         FOR I IN T_Semaine LOOP
+
+
+
+
+         END LOOP;
+
+      END Disponibilite;
+
+   END Gestion_Activites;
+
+
+
+--      --PROCEDURE Affichage_Dispo (Nbr_Place: IN OUT T_Gestion_Actvite) IS
+--
+--      BEGIN
+--
+--         For I IN T_semaine'RANGE LOOP
+                        put(i)
+--            FOR J IN T_Gestion_Activite'RANGE LOOP
+         Afficher Les Activites Si >0 Alors On Affcieh Activite Sinon On N,'Affiche Aps
+
+--
+--
+--
+--
+--      PROCEDURE Gestion_Stat-- activite la plus demandee
+--
+--      PROCEDURE Affichage_Stat-- activite la plus demandee
+--
+--
+
+
+
+
+
+
+
+--   END Reservation_Activite;
+
+--End Gestion_activites;
+
+--         -- FOR I IN T_Gestion_Activite'RANGE LOOP
+--            -- FOR J IN T_Gestion_Activite'RANGE LOOP
+--             --  Put ("Quelle activite voulez vous reserver?");
+--              -- Put (Choix(J));
+--             --Skip_line;
+--           -- END LOOP;
+--         --END LOOP;
+
+

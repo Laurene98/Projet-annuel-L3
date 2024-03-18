@@ -1,0 +1,39 @@
+WITH Outils;
+USE Outils;
+
+PACKAGE Gestion_Baby_Sitter IS
+   SUBTYPE T_Range_Age IS Integer RANGE 0..12;
+   TYPE T_Creneau IS(Matin,Aprem,Soir);
+
+   TYPE T_Planning IS ARRAY(1..6,T_Creneau) OF T_Mot; -- 2 plannings
+
+   TYPE T_Age_Enf IS ARRAY(Integer RANGE 1..8) OF T_Range_Age;
+
+   TYPE T_Baby_Sitter IS RECORD
+      Nom,Prenom : T_Mot := (OTHERS => ' ');
+      Age : Positive; -- >= 16
+      Quitte : Boolean := False;
+      Nb_Creneaux : Integer := 0;
+      Facture_Veille : Integer := 0;
+      P1,P2 : T_Planning; -- := (others => (others => " "))
+   END RECORD;
+
+   TYPE T_Cell;
+   TYPE T_Pteur IS ACCESS T_Cell;
+   TYPE T_Cell IS RECORD
+      Bs : T_Baby_Sitter;
+      Suiv : T_Pteur;
+   END RECORD;
+
+   PROCEDURE Ajout_Bs(Bs : OUT T_Baby_Sitter; Liste : IN OUT T_Pteur);
+   PROCEDURE Demande_Depart_Bs(Liste : IN T_Pteur);
+   PROCEDURE Supp_Bs(Bs : IN T_Baby_Sitter; Liste : IN OUT T_Pteur);
+   PROCEDURE Visu_Bs(Liste : IN T_Pteur);
+   PROCEDURE Visu_Facture_Veille(Liste : IN T_Pteur);
+   PROCEDURE Visu_Planning(Liste : IN T_Pteur);
+   PROCEDURE Supp_Planning(Planning : IN OUT T_Planning);
+   PROCEDURE Maj_Planning(Liste : IN T_Pteur);
+   PROCEDURE Tri_Bulle(Liste : IN OUT T_Pteur);
+
+
+END Gestion_Baby_Sitter;

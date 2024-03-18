@@ -1,0 +1,43 @@
+WITH Outils;
+USE Outils;
+
+PACKAGE Gestion_Baby_Sitter IS
+
+   TYPE T_Creneau IS(Matin,Aprem,Soir);
+   TYPE T_Jour_Ouvre IS(Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi);
+
+   TYPE T_Planning IS ARRAY(T_Jour_Ouvre,T_Creneau) OF T_Mot; -- 2 plannings
+
+   TYPE T_Baby_Sitter IS RECORD
+      Nom,Prenom : T_Mot := (OTHERS => ' ');
+      Age : Positive; -- >= 16
+      Quitte : Boolean := False;
+      Nb_Creneaux : Integer := 0;
+      Facture_Veille : Integer := 0;
+      Facture_Semaine : Integer := 0;
+      P1,P2 : T_Planning; -- := (OTHERS => (OTHERS => " "))
+   END RECORD;
+
+   TYPE T_Cell;
+   TYPE T_Pteur IS ACCESS T_Cell;
+   TYPE T_Cell IS RECORD
+      Bs : T_Baby_Sitter;
+      Suiv : T_Pteur;
+   END RECORD;
+
+
+   PROCEDURE Reset_Planning(Planning : IN OUT T_Planning);
+   PROCEDURE Ajout_Bs(Bs : OUT T_Baby_Sitter; Liste : IN OUT T_Pteur);
+   PROCEDURE Demande_Depart_Bs(Liste : IN T_Pteur);
+--   PROCEDURE Supp_Bs(Bs : IN T_Baby_Sitter; Liste : IN OUT T_Pteur);
+   PROCEDURE Visu_Bs(Liste : IN T_Pteur);
+--   PROCEDURE Visu_Facture_Veille(Liste : IN T_Pteur);
+   PROCEDURE Visu_P1(Liste : IN T_Pteur);
+   PROCEDURE Visu_P2(Liste : IN T_Pteur);
+--   PROCEDURE Visu_Planning_Bs(Liste : IN T_Pteur);
+--   PROCEDURE Visu_Garde_Jour(Liste : IN T_Pteur);
+--   PROCEDURE Maj_Planning(Liste : IN T_Pteur);
+   PROCEDURE Tri(Liste : IN T_Pteur);
+
+
+END Gestion_Baby_Sitter;

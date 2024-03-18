@@ -1,0 +1,17 @@
+Réunion avec les filles :
+
+- Comment ça se passe si l'utilisateur est déjà conncté pour l'inscription et la connexion ? (Il n'a pas accès à la page ? Autre ?)
+
+- Organisation de l'oral (Qui fait quoi ?)
+
+- Redirection après inscription / connexion 
+
+- Ajouter une deconnexion
+
+- Modifier evaluation (direct depuis l'historique) et l'ajout des pros
+
+- Si on veut ajouter un article mais que le panier est complet --> Redirection vers le panier
+
+Domi :
+
+-Comment ajuster le header ?

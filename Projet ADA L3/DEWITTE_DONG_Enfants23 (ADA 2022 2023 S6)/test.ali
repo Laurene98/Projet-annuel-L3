@@ -1,0 +1,123 @@
+V "GNAT Lib v2020"
+M P W=b
+A -gnatwu
+A -g
+A -gnato
+A -gnatwa
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IO
+RV NO_DEFAULT_INITIALIZATION
+
+U test%b		test.adb		352020f8 NE OO SU KU
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W gestion_baby_sitter%s	gestion_baby_sitter.adb	gestion_baby_sitter.ali
+W gestion_famille%s	gestion_famille.adb	gestion_famille.ali
+W gestion_garde%s	gestion_garde.adb	gestion_garde.ali
+W initialisation%s	initialisation.adb	initialisation.ali
+W outils%s		outils.adb		outils.ali
+
+D ada.ads		20200228061810 76789da1 ada%s
+D a-except.ads		20200228061810 a7106115 ada.exceptions%s
+D a-inteio.ads		20200228061810 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20200228061810 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20200228061810 119b8fb3 ada.streams%s
+D a-tags.ads		20200228061810 edddc8f0 ada.tags%s
+D a-textio.ads		20200228061810 aef4d56d ada.text_io%s
+D a-tiinio.ads		20200228061810 390edddb ada.text_io.integer_io%s
+D a-unccon.ads		20200228061810 0e9b276f ada.unchecked_conversion%s
+D gestion_baby_sitter.ads  20230422101934 9d694f00 gestion_baby_sitter%s
+D gestion_famille.ads	20230422130446 28182c6a gestion_famille%s
+D gestion_garde.ads	20230421162420 5d2ee382 gestion_garde%s
+D initialisation.ads	20230322124734 f40b83ce initialisation%s
+D interfac.ads		20200228061810 5ab55268 interfaces%s
+D i-cstrea.ads		20200228061810 e53d8b8e interfaces.c_streams%s
+D outils.ads		20230422123214 bd0e0ed2 outils%s
+D system.ads		20200228061810 32a08138 system%s
+D s-crtl.ads		20200228061810 0ebbdb71 system.crtl%s
+D s-exctab.ads		20200228061810 54135002 system.exception_table%s
+D s-ficobl.ads		20200228061810 078245e4 system.file_control_block%s
+D s-parame.ads		20200228061810 4752c4cb system.parameters%s
+D s-secsta.ads		20200327060540 9b3ab94b system.secondary_stack%s
+D s-soflin.ads		20200228061810 a7318a92 system.soft_links%s
+D s-stache.ads		20200228061810 a37c21ec system.stack_checking%s
+D s-stalib.ads		20200228061810 6b7a13f2 system.standard_library%s
+D s-stoele.ads		20200228061810 2dc34a04 system.storage_elements%s
+D s-traent.ads		20200228061810 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20200319060540 5ecf7212 system.unsigned_types%s
+D s-wchcon.ads		20200228061810 1b7d22d2 system.wch_con%s
+D test.adb		20230422134508 ccc571c5 test%b
+G a e
+G c Z b b [test standard 4 11 none]
+G r s t_famille [test standard 4 11 none] [t_familleIP gestion_famille 8 9 none]
+G r s t_baby_sitter [test standard 4 11 none] [t_baby_sitterIP gestion_baby_sitter 11 9 none]
+G r c none [test standard 4 11 none] [init_bs initialisation 6 14 none]
+G r c none [test standard 4 11 none] [init_famille initialisation 7 14 none]
+G r c none [test standard 4 11 none] [visu_p1 gestion_baby_sitter 43 14 none]
+G r c none [test standard 4 11 none] [visu_fam gestion_famille 26 14 none]
+G r c none [test standard 4 11 none] [calcul_facture gestion_famille 34 14 none]
+G r c none [test standard 4 11 none] [visu_facture_veille gestion_baby_sitter 39 14 none]
+G r c none [test standard 4 11 none] [visu_facture_bs gestion_baby_sitter 41 14 none]
+G r c none [test standard 4 11 none] [visu_facture_fam gestion_famille 32 14 none]
+X 1 ada.ads
+16K9*Ada 20e8 30|1r6 1r27 2r5 2r26
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[8|46] 30|1w10 2r9
+X 7 a-textio.ads
+57K13*Text_IO 727e16 30|1w31 2r30
+264U14*New_Line 30|69s32 79s32 89s32
+465U14*Put 30|69s4 79s4 89s4
+508U14*Put_Line 30|72s4 74s4 76s4 82s4 84s4 86s4 92s4 94s4 96s4
+X 10 gestion_baby_sitter.ads
+4K9*Gestion_Baby_Sitter 64e24 30|1w48 2r47
+6E9*T_Creneau 6e39 30|11r18 12r18
+6n22*Matin{6E9} 30|11r31
+6n34*Soir{6E9} 30|12r31
+11R9*T_Baby_Sitter 19e14 30|10r9
+22P9*T_Pteur(21R9) 30|6r12
+39U14*Visu_Facture_Veille 30|73s4 83s4 93s4
+41U14*Visu_Facture_Bs 30|75s4 85s4 95s4
+43U14*Visu_P1 30|53s4
+X 11 gestion_famille.ads
+4K9*Gestion_Famille 37e20 30|1w69 2r68
+8R9*T_Famille 14e14 30|8r14
+18P9*T_Arbre(17R9) 30|7r8
+26U14*Visu_Fam 30|58s4
+32U14*Visu_Facture_Fam 30|77s4 87s4 97s4
+34U14*Calcul_Facture 30|71s4 81s4 91s4
+X 12 gestion_garde.ads
+4K9*Gestion_Garde 10e18 30|1w86 2r85
+X 13 initialisation.ads
+4K9*Initialisation 9e19 30|1w101 2r100
+6U14*Init_Bs 30|23s4
+7U14*Init_Famille 30|24s4
+X 16 outils.ads
+1K9*Outils 11e11 30|1w40 2r39
+3A12*T_Mot{string}<integer> 30|13r49
+5E9*T_Semaine 5e80 30|5r11 69r8 79r8 89r8
+5n22*Lundi{5E9} 30|5r24
+5n29*Mardi{5E9} 30|78r12
+5n36*Mercredi{5E9} 30|88r12
+X 30 test.adb
+4U11*Test 4b11 100l5 100t9
+5e4 Jour{16|5E9} 69r24 71r27 78m4 79r24 81r27 88m4 89r24 91r27
+6p4 Liste{10|22P9} 23m12 23r12 53r12 71r19 73r24 75r20 81r19 83r24 85r20
+. 91r19 93r24 95r20
+7p4 A{11|18P9} 24m17 24r17 58r13 71r25 77r21 81r25 87r21 91r25 97r21
+8r4 Famille{11|8R9}
+9i4 K{integer}
+10r4 Bs{10|11R9}
+11e4 Creneau_Deb{10|6E9}
+12e4 Creneau_Fin{10|6E9}
+13a4 Nom_Fam{16|3A12}
+13a12 Nom_Bs{16|3A12}
+13a19 Prenom1{16|3A12}
+13a27 Prenom2{16|3A12}
+13a35 Chaine_Vide{16|3A12}
+14b4 Bool{boolean}
+

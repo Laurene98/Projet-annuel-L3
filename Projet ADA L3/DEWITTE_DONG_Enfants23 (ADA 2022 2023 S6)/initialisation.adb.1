@@ -1,0 +1,125 @@
+PACKAGE BODY Initialisation IS
+
+   PROCEDURE Init_Bs(Liste : OUT T_Pteur) IS
+      Bs : T_Baby_Sitter;
+   BEGIN
+      Reset_Planning(Bs.P1);
+      Reset_Planning(Bs.P2);
+
+      Bs.Nom(1..8) := "Alouette";
+      Bs.Prenom(1..5) := "Marie";
+      Bs.Age := 17;
+      Bs.P1(Lundi,Soir)(1..10) := "Montalbano";
+      Bs.P1(Mercredi,Matin)(1..10) := "Brunetti";
+      Bs.P1(Mercredi,Aprem)(1..10) := "Brunetti";
+      Bs.P1(Jeudi,Aprem)(1..10) := "Brunetti";
+      Liste := NEW T_Cell'(Bs, NULL);
+
+      Bs.Nom := (OTHERS => ' ');
+      Bs.Prenom := (OTHERS => ' ');
+
+      Bs.Nom(1..8) := "Arlequin";
+      Bs.Prenom(1..4) := "Marc";
+      Bs.Age := 24;
+      Liste := NEW T_Cell'(Bs, Liste);
+
+      Bs.Nom := (OTHERS => ' ');
+      Bs.Prenom := (OTHERS => ' ');
+
+      Bs.Nom(1..13) := "Bergeronnette";
+      Bs.Prenom(1..5) := "Aline";
+      Bs.Age := 35;
+      Liste := NEW T_Cell'(Bs, Liste);
+
+      Bs.Nom := (OTHERS => ' ');
+      Bs.Prenom := (OTHERS => ' ');
+
+      Bs.Nom(1..13) := "Bergeronnette";
+      Bs.Prenom(1..8) := "Bertrand";
+      Bs.Age := 28;
+      Liste := NEW T_Cell'(Bs, Liste);
+
+      Bs.Nom := (OTHERS => ' ');
+      Bs.Prenom := (OTHERS => ' ');
+
+      Bs.Nom(1..8) := "Epervier";
+      Bs.Prenom(1..7) := "Charles";
+      Bs.Age := 16;
+      Bs.Quitte := True;
+      Liste := NEW T_Cell'(Bs, Liste);
+
+      Bs.Nom := (OTHERS => ' ');
+      Bs.Prenom := (OTHERS => ' ');
+
+      Bs.Nom(1..6) := "Loriot";
+      Bs.Prenom(1..8) := "Juliette";
+      Bs.Age := 21;
+      Liste := NEW T_Cell'(Bs, Liste);
+
+      Bs.Nom := (OTHERS => ' ');
+      Bs.Prenom := (OTHERS => ' ');
+   END Init_Bs;
+
+   PROCEDURE Init_Famille(A : OUT T_Arbre) IS
+      Famille : T_Famille;
+   BEGIN
+      Famille.Nom(1..10) := "Montalbano";
+      Famille.Nb_Enfants := 2;
+      Famille.Age_Enfants(1) := 5;
+      Famille.Age_Enfants(2) := 10;
+      A := NEW T_Noeud'(Famille, NULL, NULL);
+
+      Famille.Nom := (OTHERS => ' ');
+      Famille.Age_Enfants := (OTHERS => -1);
+
+      Famille.Nom(1..12) := "Rouletabille";
+      Famille.Nb_Enfants := 1;
+      Famille.Age_Enfants(1) := 9;
+      A.Fd := NEW T_Noeud'(Famille, NULL, NULL);
+
+      Famille.Nom := (OTHERS => ' ');
+      Famille.Age_Enfants := (OTHERS => -1);
+
+      Famille.Nom(1..5) := "Burma";
+      Famille.Nb_Enfants := 4;
+      Famille.Age_Enfants(1) := 2;
+      Famille.Age_Enfants(2) := 4;
+      Famille.Age_Enfants(3) := 8;
+      Famille.Age_Enfants(4) := 10;
+      A.Fg := NEW T_Noeud'(Famille, NULL, NULL);
+
+      Famille.Nom := (OTHERS => ' ');
+      Famille.Age_Enfants := (OTHERS => -1);
+
+      Famille.Nom(1..8) := "Brunetti";
+      Famille.Nb_Enfants := 3;
+      Famille.Age_Enfants(1) := 5;
+      Famille.Age_Enfants(2) := 7;
+      Famille.Age_Enfants(3) := 12;
+      A.Fg.Fg := NEW T_Noeud'(Famille, NULL, NULL);
+
+      Famille.Nom := (OTHERS => ' ');
+      Famille.Age_Enfants := (OTHERS => -1);
+
+      Famille.Nom(1..6) := "Poirot";
+      Famille.Nb_Enfants := 5;
+      Famille.Age_Enfants(1) := 1;
+      Famille.Age_Enfants(2) := 3;
+      Famille.Age_Enfants(3) := 5;
+      Famille.Age_Enfants(4) := 7;
+      Famille.Age_Enfants(5) := 9;
+      A.Fd.Fg := NEW T_Noeud'(Famille, NULL, NULL);
+
+      Famille.Nom := (OTHERS => ' ');
+      Famille.Age_Enfants := (OTHERS => -1);
+
+      Famille.Nom(1..8) := "Le Floch";
+      Famille.Nb_Enfants := 3;
+      Famille.Age_Enfants(1) := 8;
+      Famille.Age_Enfants(2) := 9;
+      Famille.Age_Enfants(3) := 11;
+      A.Fd.Fg.Fg := NEW T_Noeud'(Famille, NULL, NULL);
+   END Init_Famille;
+
+
+END Initialisation;

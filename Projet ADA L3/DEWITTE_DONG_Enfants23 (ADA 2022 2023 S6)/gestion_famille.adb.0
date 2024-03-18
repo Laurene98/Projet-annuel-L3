@@ -1,0 +1,92 @@
+WITH Ada.Integer_Text_IO, Ada.Text_IO, Ada.Characters.Handling;
+USE Ada.Integer_Text_IO, Ada.Text_IO, Ada.Characters.Handling;
+
+PACKAGE BODY Gestion_Famille IS
+
+-----------------------------Visualisation de famille ------------------------------------------------
+   PROCEDURE Visu_Fam(A : IN T_Arbre) IS
+   BEGIN
+      IF A /= NULL THEN
+         Put("Nom de la famille : ");
+         Put(A.Famille.Nom); New_Line;
+         Put("Nombre d'enfants : ");
+         Put(A.Famille.Nb_Enfants,2); New_Line;
+         Put("Age du/des enfant(s): ");
+         FOR I IN 1..A.Famille.Nb_Enfants LOOP
+            Put(A.Famille.Age_Enfants(I),3);
+         END LOOP;
+         New_Line; New_Line;
+         Visu_Fam(A.Fg);
+         Visu_Fam(A.Fd);
+      END IF;
+   END Visu_Fam;
+
+---------------------------- Saisie d'une famille ----------------------------------------------
+   PROCEDURE New_Fam(Famille : OUT T_Famille; K : OUT Integer) IS
+   BEGIN
+      Put("Saisir le nom de famille : ");
+      LOOP
+         BEGIN
+            Get_Line(Famille.Nom,K);
+            Famille.Nom := To_Lower(Famille.Nom);
+            Famille.Nom(1) := To_Upper(Famille.Nom(1));
+            EXIT;
+         EXCEPTION
+            WHEN Constraint_Error =>
+               Put_Line("Erreur de saisie, recommencez");
+         END;
+      END LOOP;
+      Put("Saisir le nombre d'enfants (entre 1 et 8) : ");
+      LOOP
+         Ctrl_Entier(Famille.Nb_Enfants);
+         EXIT WHEN Famille.Nb_Enfants IN 1..8;
+         Put_Line("Le nombre ne correspond pas, veuillez recommencer");
+      END LOOP;
+      Put("Saisir l'age de chaque enfant (entre 0 et 12) : ");
+      FOR I IN 1..Famille.Nb_Enfants LOOP
+         LOOP -- Ctrl_Entier fait déjà la loop ??
+            Ctrl_Entier(Famille.Age_Enfants(I));
+            EXIT WHEN Famille.Age_Enfants(I) IN 0..12;
+            Put_Line("L'age ne correspond pas, veuillez recommencer");
+         END LOOP;
+      END LOOP;
+   END New_Fam;
+
+-------------------------------- Insérer/Inscription d'une famille ---------------------------------
+   PROCEDURE Insert_Fam(Famille : IN OUT T_Famille; K : Integer; A : IN OUT T_Arbre) IS
+   BEGIN
+      IF A = NULL THEN
+         A := NEW T_Noeud'(Famille, NULL, NULL);
+      ELSIF A.Famille.Nom > Famille.Nom THEN
+         Insert_Fam(Famille, K, A.Fg);
+      ELSIF A.Famille.Nom < Famille.Nom THEN
+         Insert_Fam(Famille, K, A.Fd);
+      ELSE
+         Famille.Nom(K+1) := '2';
+         Insert_Fam(Famille, K, A.Fd);
+      END IF;
+   END Insert_Fam;
+
+   --------------------- Calcul des factures de famille -----------------------------
+   FUNCTION Cal_Facture_Fam (Famille : IN T_Famille) RETURN Integer IS
+
+      FUNCTION Plus_Jeune (Famille: IN T_Famille) RETURN Integer IS -- retourne l'age du plus jeune
+         N : Integer;
+      BEGIN
+         IF Famille.Nb_Enfants = 1 THEN
+            RETURN (Famille.Age_Enfants(1));
+         ELSE
+            N := Famille.Age_Enfants(1);
+            FOR I IN Famille.Age_Enfants'RANGE LOOP
+               IF N > Famille.Age_Enfants(I) THEN
+                  N := Famille.Age_Enfants(I);
+               END IF;
+            END LOOP;
+            RETURN (N);
+         END IF;
+      END Plus_Jeune;
+
+
+
+
+END Gestion_Famille;

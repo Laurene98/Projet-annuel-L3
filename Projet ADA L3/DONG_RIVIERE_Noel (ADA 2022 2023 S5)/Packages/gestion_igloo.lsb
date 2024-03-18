@@ -1,0 +1,502 @@
+
+GNAT GPL 2017 (20170515-63)
+Copyright 1992-2017, Free Software Foundation, Inc.
+
+
+Compiling: c:/users/laurn/dropbox/projet~1/packages/gestion_igloo.adb
+Source file time stamp: 2022-12-14 07:13:16
+Compiled at: 2022-12-14 08:13:17
+
+     1. WITH Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Outils, Gestion_KDO, Gestion_Activites,  Gestion_Locataire;
+             1           2                                      3                    4                   5
+        >>> warning: redundant with clause in body
+        >>> warning: redundant with clause in body
+        >>> warning: redundant with clause in body
+        >>> warning: redundant with clause in body
+        >>> warning: redundant with clause in body
+
+     2. USE Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Outils, Gestion_KDO, Gestion_Activites, Gestion_Locataire;
+        |
+        >>> warning: "Text_IO" is already use-visible through previous use clause at gestion_igloo.ads:2
+        >>> warning: "Integer_Text_IO" is already use-visible through previous use clause at gestion_igloo.ads:2
+        >>> warning: "Gestion_locataire" is already use-visible through previous use clause at gestion_igloo.ads:2
+        >>> warning: "gestion_activites" is already use-visible through previous use clause at gestion_igloo.ads:2
+        >>> warning: "Outils" is already use-visible through previous use clause at gestion_igloo.ads:2
+
+     3.
+     4. PACKAGE BODY Gestion_Igloo IS
+     5.
+     6.    ----------------------- Initialisation igloo non cree ----------------------------
+     7.    PROCEDURE Non_Cree (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo) IS
+                               |
+        >>> warning: formal parameter "Igloo" is not referenced
+
+     8.
+     9.    BEGIN
+    10.       FOR I IN T_Igloo'RANGE LOOP
+    11.          Liste_Igloo(I).Id_Igloo := -1;
+    12.          Liste_Igloo(I).Capacite := -1;
+    13.          Liste_Igloo(I).Nb_Locataire := -1;
+    14.       END LOOP;
+    15.
+    16.    END Non_Cree;
+    17.
+    18.    ---------------------- recherche personne -----------------------------------------------
+    19.
+    20.    PROCEDURE Recherche (Infoloc : IN OUT T_Info_Locataire ;Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo; numigloo : IN OUT integer; numloc : IN OUT integer) IS
+                                                                   1                           2
+        >>> warning: formal parameter "Igloo" is not referenced
+        >>> warning: formal parameter "Liste_Igloo" is not modified
+        >>> warning: mode could be "IN" instead of "IN OUT"
+
+    21.
+    22.
+    23.    BEGIN
+    24.
+    25.       Saisie_Loc(Infoloc);
+    26.       NumIgloo:= -2;
+    27.       NumLoc:=-2;
+    28.       FOR I IN Liste_Igloo'RANGE LOOP
+    29.          FOR J IN Liste_Igloo(I).liste_locataires'range LOOP
+    30.             IF Liste_Igloo(I).Liste_Locataires(J).Nom_Locataire = Infoloc.Nom_Locataire AND Liste_Igloo(I).Liste_Locataires(J).Prenom_Locataire = Infoloc.Prenom_Locataire THEN
+    31.                NumIgloo:= I;
+    32.                NumLoc:= J;
+    33.             END IF;
+    34.          END LOOP;
+    35.       END LOOP;
+    36.
+    37. --      Put (NumIgloo);
+    38. --      New_Line;
+    39. --      Put(NumLoc);
+    40.
+    41.
+    42.    END Recherche;
+    43.
+    44.    ---------------------- Verif locataire -----------------------------------------------
+    45.
+    46.
+    47.    PROCEDURE verifloc_ins (Infoloc : IN OUT T_Info_Locataire ;Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo; numigloo : IN OUT integer; numloc : IN OUT integer; Choix_Act: IN OUT T_Activite; Nbr_Place: IN OUT T_Gestion_Activite; Choix : OUT T_Activite_Locataire; Sem: IN T_Semaine; Jours : IN T_Semaine) IS
+    48.       I, J: Integer;
+    49.
+    50.
+    51.    BEGIN
+    52.       Recherche (Infoloc, Igloo, Liste_Igloo, Numigloo, Numloc);
+    53.
+    54.
+    55.          IF NumIgloo = -2 AND THEN NumLoc =-2 THEN
+    56.          Put_Line (" Le locataire n'a pas ete retrouve. Recommencez.");
+    57.       ELSE
+    58.
+    59. FOR Z IN Liste_Igloo(NumIgloo).Liste_Locataires(NumLoc).Activite_Jour'RANGE LOOP -- affichage activites locataires
+    60.
+    61.          IF (Liste_Igloo(NumIgloo).Liste_Locataires(NumLoc).Activite_Jour(Z) = Raquette
+    62.                OR Liste_Igloo(NumIgloo).Liste_Locataires(NumLoc).Activite_Jour(Z) = Patinoire
+    63.                OR Liste_Igloo(NumIgloo).Liste_Locataires(NumLoc).Activite_Jour(z) = Traineau
+    64.                OR Liste_Igloo(NumIgloo).Liste_Locataires(NumLoc).Activite_Jour(Z) = Biscuits
+    65.                OR Liste_Igloo(NumIgloo).Liste_Locataires(NumLoc).Activite_Jour(z) = Deco
+    66.                OR Liste_Igloo(NumIgloo).Liste_Locataires(NumLoc).Activite_Jour(Z) = Igloos
+    67.                OR Liste_Igloo(NumIgloo).Liste_Locataires(NumLoc).Activite_Jour(z) = Rennes
+    68.                OR Liste_Igloo(NumIgloo).Liste_Locataires(NumLoc).Activite_Jour(Z) = Ateliers)
+    69.             AND
+    70.                (Z = Lundi XOR Z = Mardi XOR Z = Mercredi XOR Z = Jeudi XOR Z = Vendredi) THEN
+    71.                Put_Line (" Vous etes deja inscrit a des activites."); EXIT;
+    72.
+    73.       ELSIF Liste_Igloo(NumIgloo).Liste_Locataires(NumLoc).Activite_Jour(Z) = Rien
+    74.                         AND
+    75.                            (Z = Lundi OR Z = Mardi OR Z = Mercredi OR Z = Jeudi OR Z = Vendredi)
+    76.                               THEN
+    77.
+    78.
+    79.
+    80.
+    81.                                  Put_Line ("Vous avez decide de vous inscrire a des activites");
+    82.                                  Put_line ("Voici les disponibilites des activites."); New_line;
+    83.                         Affich_Tab (Nbr_Place); New_Line; New_Line;
+    84.                         Saisie_Act (Choix_Act, Nbr_Place, Choix, Sem, Jours);
+    85.                         Liste_Igloo(NumIgloo).Liste_Locataires(NumLoc).Activite_Jour(Z := Choix_Act;
+                                                                              1                2
+        >>> invalid procedure or entry call
+        >>> ":=" should be "=>"
+
+    86.
+    87.                            New_Line;
+    88.                            New_Line;
+    89.                EXIT;
+    90.                   END IF;
+    91.             END LOOP;
+    92.
+    93.
+    94.                Put (" Locataire ");
+    95.                Put (Liste_Igloo(NumIgloo).Liste_Locataires(NumLoc).Nom_Locataire); -- affichage nom
+    96.                Put (" ");
+    97.                Put (Liste_Igloo(NumIgloo).Liste_Locataires(NumLoc).Prenom_Locataire); -- affichage prenom
+    98.                new_line;
+    99.                            Put_Line ("Vous etes inscrit :");
+   100.  FOR Z IN Liste_Igloo(NumIgloo).Liste_Locataires(NumLoc).Activite_Jour'RANGE LOOP -- affichage activites locataires
+   101.                      put(T_semaine'image(Z)); put (" : "); -- affichage jour
+   102.                      Put(T_Activite'Image(Liste_Igloo(NumIgloo).Liste_Locataires(NumLoc).Activite_Jour(Z))); -- affichage activite
+   103.                      New_Line;
+   104.       END LOOP;
+   105.
+   106.
+   107.
+   108. -- END LOOP;
+   109.
+   110.             END IF;
+   111.
+   112.    END verifloc_ins;
+   113.
+   114.    ------------------------- Affichage igloo --------------------------------------------
+   115.    PROCEDURE Affich_Igloo (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo) IS
+   116.
+   117.    BEGIN
+   118.       FOR I IN Liste_Igloo'RANGE LOOP
+   119.
+   120.       Put ("Pour l'igloo n");
+   121.       Put (Liste_Igloo(I).Id_Igloo);
+   122.       Put (", on a: ");
+   123.       New_Line;
+   124.
+   125.       Put ("Capacite : ");
+   126.       Put (Liste_Igloo(I).Capacite);
+   127.       New_Line;
+   128.
+   129.       Put ("Nombre de locataire : ");
+   130.       Put (Liste_Igloo(I).Nb_Locataire);
+   131.       New_Line;
+   132.
+   133.
+   134.          IF Liste_Igloo(I).Nb_Locataire > 0 THEN
+   135.             Put_Line ("La liste des locataires");
+   136.             FOR J IN Liste_Igloo(I).liste_locataires'range LOOP
+   137.                EXIT WHEN J = Liste_Igloo(I).Nb_Locataire;
+   138.                Put ("Nom : ");
+   139.                Put (Liste_Igloo(I).Liste_Locataires(J).Nom_Locataire); -- affichage nom
+   140.                New_Line;
+   141.                Put ("Prenom : ");
+   142.                Put (Liste_Igloo(I).Liste_Locataires(J).Prenom_Locataire); -- affichage prenom
+   143.                new_line;
+   144.                Put ("Cadeau: ");
+   145.                Put (T_KDO'Image(Liste_Igloo(I).Liste_Locataires(J).Cadeau)); -- affichage cadeau
+   146.                New_Line;
+   147.
+   148.                   FOR Z IN Liste_Igloo(I).Liste_Locataires(J).Activite_Jour'RANGE LOOP -- affichage activites locataires
+   149.                      put(T_semaine'image(Z)); put (" : "); -- affichage jour
+   150.                      Put(T_Activite'Image(Liste_Igloo(I).Liste_Locataires(J).Activite_Jour(Z))); -- affichage activite
+   151.                      New_Line;
+   152.                   END LOOP;
+   153.
+   154.                   IF Liste_Igloo(I).Liste_Locataires(J).Veille THEN -- participe a la veille ?
+   155.                      Put("Participe a la veille.");
+   156.                   ELSE
+   157.                      Put("Ne participe pas a la veille."); New_Line;
+   158.                   END IF;
+   159.
+   160.                New_Line;
+   161.             END LOOP; New_Line;
+   162.          ELSIF Liste_Igloo(I).Nb_Locataire = 0 THEN
+   163.             Put_Line ("Pas de locataire.");
+   164.          ELSIF Liste_Igloo(I).Nb_Locataire < 0 THEN
+   165.             Put_Line ("Igloo non construit.");
+   166.          END IF;
+   167.          New_Line;New_Line;
+   168.       END LOOP;
+   169.
+   170.    END Affich_Igloo;
+   171.
+   172.
+   173.    ------------------------- Comptage de veille --------------------------------------------
+   174.    PROCEDURE Veille (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo) IS
+   175.       nb: integer;
+   176.    BEGIN
+   177.       Nb := Nb_veille (Igloo,Liste_Igloo);
+   178.
+   179.       Put ("Le nombre de personnes qui participe a la veille est de ");
+   180.       Put (nb);
+   181.       Put (".");
+   182.    END Veille;
+   183.
+   184.
+   185.    FUNCTION Nb_Veille (Igloo: T_Info_Igloo; Liste_Igloo: T_Igloo) RETURN Integer IS
+   186.       nbdeveille : integer := 0;
+   187.
+   188.    BEGIN
+   189.       FOR I IN Liste_Igloo'RANGE LOOP
+   190.
+   191.        IF Liste_Igloo(I).Nb_Locataire > 0 THEN
+   192.             FOR J IN Liste_Igloo(I).liste_locataires'range LOOP
+   193.             EXIT WHEN J = Liste_Igloo(I).Nb_Locataire;
+   194.                IF Liste_Igloo(I).Liste_Locataires(J).Veille THEN -- participe a la veille ?
+   195.                   nbdeveille := nbdeveille + 1;
+   196.                END IF;
+   197.             END LOOP;
+   198.          END IF;
+   199.       END LOOP;
+   200.       RETURN (Nbdeveille);
+   201.
+   202.    END nb_veille;
+   203.
+   204.
+   205.    ------------------------- Liste igloo --------------------------------------------
+   206.    PROCEDURE ListeIgloo (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo) IS
+   207.
+   208.    BEGIN
+   209.       FOR I IN Liste_Igloo'RANGE LOOP
+   210.          IF Liste_Igloo(I).Id_Igloo /= -1 THEN
+   211.
+   212.             Put ("Pour l'igloo n");
+   213.             Put (Liste_Igloo(I).Id_Igloo);
+   214.             Put (", on a: ");
+   215.             New_Line;
+   216.
+   217.             Put ("Capacite : ");
+   218.             Put (Liste_Igloo(I).Capacite);
+   219.             New_Line;
+   220.
+   221.             Put ("Nombre de locataire : ");
+   222.             Put (Liste_Igloo(I).Nb_Locataire);
+   223.             New_Line; New_Line; New_Line;
+   224.          END IF;
+   225.
+   226.       END LOOP;
+   227.
+   228.    END ListeIgloo;
+   229.
+   230.    ----------------------------- Affichage infos locataire (Initial) ------------------------------------------------
+   231.
+   232.    PROCEDURE Liste_loca (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo) IS
+   233.
+   234.    BEGIN
+   235.       FOR I IN Liste_Igloo'RANGE LOOP
+   236.          IF Liste_Igloo(I).Nb_Locataire > 0 THEN
+   237.             Put ("La liste des locataires, pour l igloo "); put (i); Put_Line (":");
+   238.             FOR J IN Liste_Igloo(I).liste_locataires'range LOOP
+   239.                EXIT WHEN J = Liste_Igloo(I).Nb_Locataire;
+   240.                Put ("- ");
+   241.                Put (Liste_Igloo(I).Liste_Locataires(J).Nom_Locataire); -- affichage nom
+   242.                Put (" ");
+   243.                Put (Liste_Igloo(I).Liste_Locataires(J).Prenom_Locataire); -- affichage prenom
+   244.                New_Line;
+   245.             END LOOP; New_Line;
+   246.          ELSIF Liste_Igloo(I).Nb_Locataire = 0 THEN
+   247.             Put_Line ("Pas de locataire.");
+   248.          ELSIF Liste_Igloo(I).Nb_Locataire < 0 THEN
+   249.             Put_Line ("Igloo non construit.");
+   250.          END IF;
+   251.          New_Line;New_Line;
+   252.       END LOOP;
+   253.
+   254.    END Liste_loca;
+   255.
+   256.
+   257.    --------------------------------- Création d'igloo ---------------------------------------
+   258.
+   259.    PROCEDURE Crea_Igloo (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo) is
+   260.       N:Integer;
+   261.       Z: Integer;
+   262.
+   263.    BEGIN
+   264.
+   265.       Put ("Vous voulez creer un igloo."); New_Line;
+   266.
+   267.       LOOP
+   268.          BEGIN
+   269.             Put ("Saisir la capacite de l'igloo de 2, 4 ou 6. "); New_Line;
+   270.             Get(N); Skip_Line;
+   271.             EXIT WHEN N=2 OR N=4 OR N=6;
+   272.             Put("La capacite saisie est incorrect. Recommencez."); New_Line;
+   273.          EXCEPTION WHEN Data_Error=> Skip_Line; Put ("Erreur de saisie. Veuillez saisir un entier."); New_Line;
+   274.          END;
+   275.       END LOOP;
+   276.
+   277.       FOR I IN T_Igloo'RANGE LOOP
+   278.          IF Liste_Igloo(I).Id_Igloo = -1 THEN
+   279.             Liste_Igloo(I) := Igloo;
+   280.             Liste_Igloo(I).Id_Igloo := I;
+   281.             Liste_Igloo(I).Capacite := N;
+   282.             Liste_Igloo(I).Nb_Locataire := 0;
+   283.             Put ("L igloo n");
+   284.             Put (Liste_Igloo(I).Id_Igloo);
+   285.             Put (" est ouverte a la location, sa capacite est de ");
+   286.                Put (Liste_Igloo(I).Capacite);
+   287.                Put (".");
+   288.             New_Line;
+   289.          END IF;
+   290.
+   291.             IF Liste_Igloo(I).Id_Igloo /= -1 THEN
+   292.                Put_Line ("Creation impossible, cette emplacement est occupe.");
+   293.             END IF;
+   294.
+   295.       END LOOP;
+   296.
+   297.    END Crea_Igloo;
+   298.
+   299. ------------------------------------------------------------------------------------
+   300.    PROCEDURE Reservation_Igloo (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo) IS
+   301.       N:Integer;
+   302.
+   303.       Begin
+   304.          LOOP
+   305.             BEGIN
+   306.                Put_Line("Preciser le nombre de couchages requis.");
+   307.                Get(N); Skip_Line;
+   308.                EXIT WHEN N < 6;
+   309.                Put("Le nombre de couchage est invalide");
+   310.             EXCEPTION WHEN Data_Error=> Put ("Erreur de saisie, igloo 2 a 6 personnes");
+   311.             END;
+   312.          END LOOP;
+   313.
+   314.          FOR I IN Liste_Igloo'RANGE LOOP
+   315.             IF Liste_Igloo(I).Loue=False AND Liste_Igloo(I).Capacite=N THEN
+   316.                Liste_Igloo(I).Loue:=True;
+   317.                Put("attribution de l'igloo");Put(I);New_Line;
+   318.                EXIT;
+   319.             ELSIF Liste_Igloo(I).Loue=False AND Liste_Igloo(I).Capacite/=N THEN
+   320.                IF Liste_Igloo(I).Loue=False AND Liste_Igloo(I).Capacite=N+1 THEN
+   321.                   Liste_Igloo(I).Loue:=True;
+   322.                   Put("attribution de l'igloo");Put(I);New_Line;EXIT;
+   323.                END IF;
+   324.             END IF;
+   325.          END LOOP;
+   326.          FOR I IN Liste_Igloo'RANGE LOOP
+   327.             IF Liste_Igloo(I).Loue=False THEN
+   328.                Put("pas d'igloo de capacite suffisante");New_Line;
+   329.             END IF;
+   330.          END LOOP;
+   331.
+   332.
+   333.       END Reservation_Igloo;
+   334.
+   335. ---------------------------------------------------------
+   336.
+   337.    PROCEDURE Initial_Igloo (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo) IS
+   338.
+   339.    Infoloc1,Infoloc2,Infoloc3,Infoloc4,Infoloc5,Infoloc6,Infoloc7,Infoloc8,Infoloc9,Infoloc10,Infoloc11,Infoloc12,Infoloc13,Infoloc14,Infoloc15,Infoloc16,Infoloc17:T_Info_Locataire;
+   340.
+   341.
+   342.    BEGIN
+   343.
+   344. Liste_Igloo(1).Id_Igloo:=1;
+   345. Liste_Igloo(1).Capacite:=4;
+   346. Liste_Igloo(1).Nb_Locataire:=3;
+   347.
+   348. Liste_Igloo(2).Id_Igloo:=2;
+   349. Liste_Igloo(2).Capacite:=6;
+   350. Liste_Igloo(2).Nb_Locataire:=5;
+   351.
+   352. Liste_Igloo(3).Id_Igloo:=3;
+   353. Liste_Igloo(3).Capacite:=2;
+   354. Liste_Igloo(3).Nb_Locataire:=2;
+   355.
+   356. Liste_Igloo(4).Id_Igloo:=4;
+   357. Liste_Igloo(4).Capacite:=4;
+   358. Liste_Igloo(4).Nb_Locataire:=4;
+   359.
+   360. Liste_Igloo(5).Id_Igloo:=5;
+   361. Liste_Igloo(5).Capacite:=4;
+   362. Liste_Igloo(5).Nb_Locataire:=0;
+   363.
+   364. Liste_Igloo(6).Id_Igloo:=6;
+   365. Liste_Igloo(6).Capacite:=4;
+   366. Liste_Igloo(6).Nb_Locataire:=3;
+   367.
+   368.       Infoloc1:= ("VALJEAN                       ", "JEAN                          ", Boissons,(Raquette, Patinoire, Rien, Raquette, Rennes, Rien, Rien),True);
+   369.       Infoloc2:= ("VALJEAN                       ", "MARIE                         ", Chocolats, (Traineau, Patinoire, Deco, Biscuits, Rien, Rien, Rien),True);
+   370.       Infoloc3:= ("VALJEAN                       ", "LULU                          ", Biscuits, (Traineau, Biscuits, Deco, Ateliers, Rennes,Rien, Rien),True);
+   371.
+   372.       Liste_Igloo(1).Liste_Locataires(1):=Infoloc1;
+   373.       Liste_Igloo(1).Liste_Locataires(2):=Infoloc2;
+   374.       Liste_Igloo(1).Liste_Locataires(3):=Infoloc3;
+   375.
+   376.
+   377.       Infoloc4:= ("PERRAULT                      ", "CHARLES                       ", Chocolats,(Traineau,Raquette, Biscuits,Igloos,Rennes,Rien, Rien),True);
+   378.       Infoloc5:= ("PERRAULT                      ", "JEANNE                        ", Chocolats,(Biscuits,Raquette, Traineau,Igloos,Rennes,Rien, Rien),True);
+   379.       Infoloc6:= ("PERRAULT                      ", "BLANCHE                       ", Fruits_confits,(Biscuits,Rien, Deco,Rien,Ateliers,Rien, Rien),True);
+   380.       Infoloc7:= ("PERRAULT                      ", "PAUL                          ", Biscuits,(Igloos,Patinoire,Traineau,Biscuits,Rennes,Rien, Rien),False);
+   381.       Infoloc8:= ("PERRAULT                      ", "ARIEL                         ", Chocolats,(Traineau,Patinoire,Deco,Biscuits,Ateliers,Rien, Rien),True);
+   382.
+   383.
+   384.       Liste_Igloo(2).Liste_Locataires(1):=Infoloc4;
+   385.       Liste_Igloo(2).Liste_Locataires(2):=Infoloc5;
+   386.       Liste_Igloo(2).Liste_Locataires(3):=Infoloc6;
+   387.       Liste_Igloo(2).Liste_Locataires(4):=Infoloc7;
+   388.       Liste_Igloo(2).Liste_Locataires(5):=Infoloc8;
+   389.
+   390.      Infoloc9:= ("SKY                           ", "Luke                          ", Chocolats,(Traineau,Igloos,Patinoire,Raquette,Rennes,Rien, Rien),True);
+   391.      Infoloc10:= ("SKY                           ", "LEILA                         ", Fruits_confits,(Biscuits,Patinoire,Deco,Raquette,Ateliers,Rien, Rien),True);
+   392.
+   393.      Liste_Igloo(3).Liste_Locataires(1):=Infoloc9;
+   394.      Liste_Igloo(3).Liste_Locataires(2):=Infoloc10;
+   395.
+   396.      Infoloc11:= ("LOVELACE                      ", "ADA                           ",Boissons,(Traineau,Patinoire,Rien,Rien,Igloos,Rien, Rien),False);
+   397.      Infoloc12:= ("LOVELACE                      ", "BOB                           ", Chocolats,(Traineau,Patinoire,Deco,biscuits,Rien,Rien, Rien),True);
+   398.      Infoloc13:= ("BABBAGE                       ", "CHARLES                       ",Biscuits,(Igloos,Patinoire,Traineau,Biscuits,Rennes,Rien, Rien),False);
+   399.      Infoloc14:= ("BABBAGE                       ", "ALICE                         ", Boissons,(Traineau,Biscuits,Deco,Ateliers,Rennes,Rien, Rien),True);
+   400.      Liste_Igloo(4).Liste_Locataires(1):=InfoLoc11;
+   401.      Liste_Igloo(4).Liste_Locataires(2):=InfoLoc12;
+   402.      Liste_Igloo(4).Liste_Locataires(3):=InfoLoc13;
+   403.      Liste_Igloo(4).Liste_Locataires(4):=InfoLoc14;
+   404.
+   405.      Infoloc15:= ("PAN                           ", "PETER                         ",Boissons,(Rien,Rien,Rien,Rien,Rien,Rien, Rien),False);
+   406.      Infoloc16:= ("PAN                           ", "WENDY                         ",Chocolats,(Rien,Rien,Rien,Rien,Rien,Rien, Rien),False);
+   407.      Infoloc17:= ("PAN                           ", "MICHEL                        ",Biscuits,(Rien,Rien,Rien,Rien,Rien,Rien, Rien),False);
+   408.
+   409.      Liste_Igloo(6).Liste_Locataires(1):=InfoLoc15;
+   410.      Liste_Igloo(6).Liste_Locataires(2):=InfoLoc16;
+   411.      Liste_Igloo(6).Liste_Locataires(3):=InfoLoc17;
+   412.
+   413.
+   414.    END Initial_Igloo;
+   415.
+   416.   END Gestion_Igloo;
+   417.
+   418. --         PROCEDURE Annulation_Resrvation; -- afficher le nbr de locataire, remettre  ajour les dispo d'activite et la veillee, recuperer le KDO mettre à jour, si dernier locataire signifie qu"un igloo est libere
+
+Compiling: c:/users/laurn/dropbox/projet~1/packages/gestion_igloo.ads
+Source file time stamp: 2022-12-14 05:08:24
+Compiled at: 2022-12-14 08:13:17
+
+     1. WITH Ada.Text_IO,Ada.Integer_Text_IO,Gestion_Locataire, Gestion_Activites, Outils;
+                1           3
+        >>> warning: no entities of "Ada.Text_IO" are referenced in spec
+        >>> warning: with clause might be moved to body
+        >>> warning: no entities of "Ada.Integer_Text_IO" are referenced in spec
+        >>> warning: with clause might be moved to body
+
+     2. USE Ada.Text_IO,Ada.Integer_Text_IO,Gestion_Locataire, Gestion_Activites, Outils;
+     3.
+     4.
+     5.
+     6. PACKAGE Gestion_Igloo IS
+     7.
+     8. NBI : CONSTANT Integer := 7;
+     9.
+    10.    Type T_Info_igloo is record
+    11.       Id_Igloo : integer ;
+    12.       Capacite : integer ;
+    13.       Liste_locataires : T_locataire ;
+    14.       Nb_Locataire: Integer;
+    15.       Loue:boolean:=false;
+    16.    END RECORD ;
+    17.
+    18. TYPE T_Igloo IS ARRAY (Integer RANGE 1..NBI) OF T_Info_Igloo;
+    19.
+    20.
+    21.
+    22.
+    23. PROCEDURE Non_Cree (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo);
+    24. PROCEDURE Crea_Igloo (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo);
+    25. PROCEDURE Reservation_Igloo (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo);
+    26. PROCEDURE Affich_Igloo (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo);
+    27. PROCEDURE Liste_Loca (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo);
+    28. FUNCTION Nb_Veille (Igloo: T_Info_Igloo; Liste_Igloo: T_Igloo) RETURN Integer;
+    29. PROCEDURE Initial_Igloo (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo);
+    30. PROCEDURE Veille (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo);
+    31. PROCEDURE ListeIgloo (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo);
+    32. PROCEDURE Recherche (Infoloc : IN OUT T_Info_Locataire ;Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo; Numigloo : IN OUT Integer; Numloc : IN OUT Integer);
+    33. PROCEDURE verifloc_ins (Infoloc : IN OUT T_Info_Locataire ;Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo; numigloo : IN OUT integer; numloc : IN OUT integer; Choix_Act: IN OUT T_Activite; Nbr_Place: IN OUT T_Gestion_Activite; Choix : OUT T_Activite_Locataire; Sem: IN T_Semaine; Jours : IN T_Semaine);
+    34.
+    35. END Gestion_Igloo;
+    36.
+
+ 418 lines: 2 errors, 18 warnings

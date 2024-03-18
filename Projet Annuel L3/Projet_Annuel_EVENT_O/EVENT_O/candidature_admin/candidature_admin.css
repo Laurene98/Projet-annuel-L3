@@ -1,0 +1,44 @@
+body {
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+h1 {
+  font-size: 5vw;
+  text-align: center;
+  font-family: cursive;
+}
+
+table {
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  text-align: center;
+}
+
+th {
+  font-family: cursive;
+  width: 100%;
+  padding: 1vw;
+  text-decoration: underline;
+}
+
+td {
+  font-family: cursive;
+  width: 100%;
+  padding: 1vw;
+}
+
+img {
+  width: 3vw;
+  height: 3vw;
+}
+
+/*button [type="submit"] {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

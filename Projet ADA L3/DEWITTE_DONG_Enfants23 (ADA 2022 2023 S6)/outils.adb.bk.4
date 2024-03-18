@@ -1,0 +1,20 @@
+PACKAGE BODY Outils IS
+
+   -- procedure ctrl_entier
+   -- procedure ctrl_string
+
+   PROCEDURE Jour_Suiv(Jour : IN OUT T_Semaine) IS
+   BEGIN
+      IF Jour = T_Semaine'Last THEN
+         Jour := T_Semaine'First;
+      ELSE
+         Jour := T_Semaine'Succ(Jour);
+      END IF;
+   END Jour_Suiv;
+
+
+
+
+END Outils;
+
+

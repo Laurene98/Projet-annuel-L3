@@ -1,0 +1,162 @@
+WITH Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO,Outils;
+USE Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO,Outils;
+
+
+PACKAGE BODY gestion_activites IS
+
+   ----------------------------------- Données initial -----------------------------------------
+
+   PROCEDURE Initial_Act (Nbr_Place: IN OUT T_Gestion_Activite) IS
+   BEGIN
+
+      Nbr_Place(Lundi,Raquette):=8;
+      Nbr_Place(Lundi,Patinoire):=8;
+      Nbr_Place(Lundi,Traineau):=0;
+      Nbr_Place(Lundi,Biscuits):=5;
+      Nbr_Place(Lundi,Deco):=8;
+      Nbr_Place(Lundi,Igloos):=5;
+      Nbr_Place(Lundi,Rennes):=8;
+      Nbr_Place(Lundi,Ateliers):=8;
+
+      Nbr_Place(Mardi,Raquette):=6;
+      Nbr_Place(Mardi,Patinoire):=0;
+      Nbr_Place(Mardi,Traineau):=8;
+      Nbr_Place(Mardi,Biscuits):=6;
+      Nbr_Place(Mardi,Deco):=8;
+      Nbr_Place(Mardi,Igloos):=7;
+      Nbr_Place(Mardi,Rennes):=8;
+      Nbr_Place(Mardi,Ateliers):=8;
+
+      Nbr_Place(Mercredi,Raquette):=8;
+      Nbr_Place(Mercredi,Patinoire):=7;
+      Nbr_Place(Mercredi,Traineau):=5;
+      Nbr_Place(Mercredi,Biscuits):=7;
+      Nbr_Place(Mercredi,Deco):=1;
+      Nbr_Place(Mercredi,Igloos):=8;
+      Nbr_Place(Mercredi,Rennes):=8;
+      Nbr_Place(Mercredi,Ateliers):=8;
+
+      Nbr_Place(Jeudi,Raquette):=5;
+      Nbr_Place(Jeudi,Patinoire):=8;
+      Nbr_Place(Jeudi,Traineau):=8;
+      Nbr_Place(Jeudi,Biscuits):=3;
+      Nbr_Place(Jeudi,Deco):=8;
+      Nbr_Place(Jeudi,Igloos):=6;
+      Nbr_Place(Jeudi,Rennes):=8;
+      Nbr_Place(Jeudi,Ateliers):=6;
+
+      Nbr_Place(Vendredi,Raquette):=8;
+      Nbr_Place(Vendredi,Patinoire):=8;
+      Nbr_Place(Vendredi,Traineau):=8;
+      Nbr_Place(Vendredi,Biscuits):=8;
+      Nbr_Place(Vendredi,Deco):=8;
+      Nbr_Place(Vendredi,Igloos):=7;
+      Nbr_Place(Vendredi,Rennes):=0;
+      Nbr_Place(Vendredi,Ateliers):=5;
+
+      Nbr_Place(samedi,Raquette):=0;
+      Nbr_Place(samedi,Patinoire):=0;
+      Nbr_Place(samedi,Traineau):=0;
+      Nbr_Place(samedi,Biscuits):=0;
+      Nbr_Place(samedi,Deco):=0;
+      Nbr_Place(samedi,Igloos):=0;
+      Nbr_Place(samedi,Rennes):=0;
+      Nbr_Place(samedi,Ateliers):=0;
+
+      Nbr_Place(dimanche,Raquette):=0;
+      Nbr_Place(dimanche,Patinoire):=0;
+      Nbr_Place(dimanche,Traineau):=0;
+      Nbr_Place(dimanche,Biscuits):=0;
+      Nbr_Place(dimanche,Deco):=0;
+      Nbr_Place(dimanche,Igloos):=0;
+      Nbr_Place(dimanche,Rennes):=0;
+      Nbr_Place(dimanche,Ateliers):=0;
+   END Initial_Act;
+
+
+
+   --------------------------Affichage de place disponible ------------------------------------
+
+      PROCEDURE Affichage_Dispo (Nbr_Place: IN OUT T_Gestion_Activite) IS
+      BEGIN
+
+         Initial_Act (Nbr_Place);
+
+         FOR I IN T_Semaine'RANGE LOOP
+            FOR J IN T_Activite'RANGE LOOP
+               EXIT WHEN I = Samedi;
+               EXIT WHEN I = Dimanche;
+               IF Nbr_Place(I,J)= 0 THEN
+                  Put("Plus de disponibilite pour ");
+                  Put (T_Activite'Image(J));
+                  Put(" le "); Put(T_Semaine'Image(I)); New_Line;
+               ELSE
+                  Put("Pour ");
+                  Put(T_Activite'Image(J));
+                  Put(" les jours ou il y a des disponibilites sont: ");
+                  Put(T_Semaine'Image(I));
+                  Put_Line(".");
+                  Put("Le nombre de place restantes sont: ");
+                  Put(Nbr_Place(I,J)); New_Line;
+               END IF;
+            END LOOP;
+         END LOOP;
+      END Affichage_Dispo;
+
+      -------------------------------- Affiche en tableau des disponibilité -----------------------------------------------
+
+   Procedure affich_tab (Nbr_Place: IN out T_Gestion_Activite) IS
+
+   BEGIN
+      Initial_Act (Nbr_Place);
+
+      put("             ");
+      FOR I IN T_Semaine'RANGE LOOP
+         Put (T_Semaine'Image(I)); put("      ");
+      END LOOP; new_line;
+      FOR I IN T_Activite'RANGE LOOP
+         Put(T_Activite'Image(I));
+         FOR J IN T_Semaine'RANGE LOOP
+            Put(Nbr_Place(j,i));
+         END LOOP;
+         New_Line;
+      END LOOP;
+
+   END Affich_Tab;
+
+
+       -----------------------------------------------------------------------------------------
+
+   PROCEDURE Gestion_Stat (Nbr_Place: IN OUT T_Gestion_Activite; Inscrit : Nbr_Place: IN OUT T_Gestion_Activite; Tot_Ins : Nbr_Place: IN OUT T_Gestion_Activite) IS
+
+   BEGIN
+      Tot_Ins := 0;
+      FOR I IN T_Semaine'RANGE LOOP
+         FOR J IN T_Activite'RANGE LOOP
+            EXIT WHEN I = Samedi;
+            EXIT WHEN I = Dimanche;
+            Inscrit (I,J) := 8 - Nbr_Place(I,J);
+            Tot_Ins(I,J) := (I,J)
+
+
+
+
+
+--      PROCEDURE Affichage_Stat-- activite la plus demandee
+--
+--
+
+
+
+--End Gestion_activites;
+
+--          FOR I IN T_Gestion_Activite'RANGE LOOP
+--             FOR J IN T_Gestion_Activite'RANGE LOOP
+--               Put ("Quelle activite voulez vous reserver?");
+--               Put (Choix(J));
+--             Skip_line;
+--            END LOOP;
+--         END LOOP;
+
+
+End Gestion_activites;

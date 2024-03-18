@@ -1,0 +1,93 @@
+PACKAGE BODY Initialisation IS
+
+   PROCEDURE Init_Bs(Liste : OUT T_Pteur) IS
+      Bs : T_Baby_Sitter;
+   BEGIN
+      Bs.Nom(1..8) := "Alouette";
+      Bs.Prenom(1..5) := "Marie";
+      Bs.Age := 17;
+      Liste := NEW T_Cell'(Bs, NULL);
+
+      Bs.Nom := (OTHERS => ' ');
+      Bs.Prenom := (OTHERS => ' ');
+
+      Bs.Nom(1..8) := "Arlequin";
+      Bs.Prenom(1..4) := "Marc";
+      Bs.Age := 24;
+      Liste := NEW T_Cell'(Bs, Liste);
+
+      Bs.Nom := (OTHERS => ' ');
+      Bs.Prenom := (OTHERS => ' ');
+
+      Bs.Nom(1..13) := "Bergeronnette";
+      Bs.Prenom(1..5) := "Aline";
+      Bs.Age := 35;
+      Liste := NEW T_Cell'(Bs, Liste);
+
+      Bs.Nom := (OTHERS => ' ');
+      Bs.Prenom := (OTHERS => ' ');
+
+      Bs.Nom(1..13) := "Bergeronnette";
+      Bs.Prenom(1..8) := "Bertrand";
+      Bs.Age := 28;
+      Liste := NEW T_Cell'(Bs, Liste);
+
+      Bs.Nom := (OTHERS => ' ');
+      Bs.Prenom := (OTHERS => ' ');
+
+      Bs.Nom(1..8) := "Epervier";
+      Bs.Prenom(1..7) := "Charles";
+      Bs.Age := 16;
+      Bs.Quitte := True;
+      Liste := NEW T_Cell'(Bs, Liste);
+
+      Bs.Nom := (OTHERS => ' ');
+      Bs.Prenom := (OTHERS => ' ');
+
+      Bs.Nom(1..6) := "Loriot";
+      Bs.Prenom(1..8) := "Juliette";
+      Bs.Age := 21;
+      Liste := NEW T_Cell'(Bs, Liste);
+
+      Bs.Nom := (OTHERS => ' ');
+      Bs.Prenom := (OTHERS => ' ');
+   END Init_Bs;
+
+   PROCEDURE Init_Famille(A : OUT T_Arbre) IS
+      Famille : T_Famille;
+   BEGIN
+      Famille.Nom(1..10) := "Montalbano";
+      Famille.Enfants(1) := 5;
+      Famille.Enfants(2) := 10;
+      A := NEW T_Noeud'(Famille, NULL, NULL);
+
+      Famille.Nom := (OTHERS => ' ');
+      Famille.Enfants := (OTHERS => -1);
+
+      Famille.Nom(1..12) := "Rouletabille";
+      Famille.Enfants(1) := 9;
+      A.Fd := NEW T_Noeud'(Famille, NULL, NULL);
+
+      Famille.Nom := (OTHERS => ' ');
+      Famille.Enfants := (OTHERS => -1);
+
+      Famille.Nom(1..5) := "Burma";
+      Famille.Enfants(1) := 2;
+      Famille.Enfants(2) := 4;
+      Famille.Enfants(2) := 8;
+      Famille.Enfants(2) := 10;
+      A.Fg := NEW T_Noeud'(Famille, NULL, NULL);
+
+      Famille.Nom := (OTHERS => ' ');
+      Famille.Enfants := (OTHERS => -1);
+
+      Famille.Nom(1..5) := "Burma";
+      Famille.Enfants(1) := 2;
+      Famille.Enfants(2) := 4;
+      Famille.Enfants(2) := 8;
+      Famille.Enfants(2) := 10;
+      A.Fg := NEW T_Noeud'(Famille, NULL, NULL);
+   END Init_Famille;
+
+
+END Initialisation;

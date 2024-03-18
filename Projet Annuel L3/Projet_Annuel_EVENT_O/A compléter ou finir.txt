@@ -1,0 +1,20 @@
+Sénario 1
+- Limite de 20 min pour utilisateur anonyme (une utilisateur anomyne doit pouvoir avoir un panier)
+
+Sénario 2
+
+Sénario 3
+- 4 photos max
+
+Sénario 4 fini
+Sénario 5 fini 
+Sénario 6 fini (manque: Nom du thème et jours d'affichage -> abandonner car on a pas pris en compte des variables pour ça)
+
+Sénario 7
+- limite de 20 min avec la sauvegarde automatique
+
+Sénario 8 : changement de Contactez_nous en un formulaire a valider
+- revoir la structure de la chaine d'ajout d'un professionnel
+- limite sauvegarde automatique
+
+Barre de recherche et un filtre, ajout en favori a faire 

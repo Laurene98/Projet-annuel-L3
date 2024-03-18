@@ -1,0 +1,34 @@
+WITH Ada.Text_IO,Ada.Integer_Text_IO, Outils, Ada.Characters.Handling;
+USE Ada.Text_IO,Ada.Integer_Text_IO, Outils, Ada.Characters.Handling;
+
+PACKAGE BODY Outils IS
+
+PROCEDURE Gestion_Mots (Mot : OUT T_Mot) IS
+   Mot_Test : T_Mot;
+   K : Natural;
+   S : String (1..31);
+
+BEGIN
+Mot := (OTHERS => ' ');
+
+      FOR I IN Mot'range LOOP
+
+   LOOP
+         Get_line (S,K);
+         Mot(i):= To_Upper (Mot(i));
+         CASE Mot(i) IS
+         WHEN 'A'..'Z'|'a'..'z' => Mot(i) := To_Upper (Mot(i)); EXIT;
+         WHEN OTHERS => NULL;
+         END CASE;
+
+      END LOOP;
+
+Skip_Line;
+      EXIT;
+
+      END LOOP;
+
+
+END Gestion_Mots;
+
+END Outils;

@@ -1,0 +1,98 @@
+WITH Ada.Integer_Text_IO, Ada.Text_IO, Outils, Gestion_Baby_Sitter, Gestion_Famille, Gestion_Garde, Initialisation;
+USE Ada.Integer_Text_IO, Ada.Text_IO, Outils, Gestion_Baby_Sitter, Gestion_Famille, Gestion_Garde, Initialisation;
+
+PROCEDURE Test IS
+   Jour : T_Semaine := Jeudi;
+   Liste : T_Pteur;
+   A : T_Arbre;
+   Famille : T_Famille;
+   K : Integer;
+   Bs : T_Baby_Sitter;
+   Creneau_Deb : T_Creneau := Matin;
+   Creneau_Fin : T_Creneau := Soir;
+   Nom_Fam,Nom_Bs,Prenom1,Prenom2,Chaine_Vide : T_Mot := (OTHERS => ' ');
+   Bool : Boolean;
+
+   FUNCTION Enfants_3_Moins(A : T_Arbre; Nom_Fam : T_Mot) RETURN Boolean IS
+   BEGIN
+      IF A /= NULL THEN
+         IF A.Famille.Nom = Nom_Fam THEN
+            Put_Line("ok1");
+            FOR I IN T_Age_Enf'RANGE LOOP
+               Put(A.Famille.Age_Enfants(I)); New_Line;
+               IF A.Famille.Age_Enfants(I) IN 0..3 THEN
+                  Put_Line("ok2");
+                  RETURN(True);
+               END IF;
+            END LOOP;
+            Put_Line("ok3");
+            RETURN(False);
+         END IF;
+         Put_Line("ok0");
+         RETURN(Enfants_3_Moins(A.Fg,Nom_Fam) AND THEN Enfants_3_Moins(A.Fd,Nom_Fam));
+      ELSE
+         Put_Line("ok4");
+         RETURN(False);
+      END IF;
+   END Enfants_3_Moins;
+
+BEGIN
+--   Jour_Suiv(Jour);
+--   Put(T_Semaine'Image(Jour)); New_Line;
+
+
+--   Ajout_Bs(Bs,Liste);
+
+   Init_Bs(Liste);
+   Init_Famille(A);
+
+--   Visu_Bs(Liste); New_Line;
+--   Tri(Liste); New_Line;
+--   Ajout_Bs(Bs,Liste);
+--   Ajout_Bs(Bs,Liste);
+--   Tri(Liste); New_Line;
+
+
+--   Visu_P1(Liste);
+--   Visu_P2(Liste);
+
+--   New_Fam(Famille,K);
+--   Insert_Fam(Famille,K,A);
+--   New_Fam(Famille,K);
+--   Insert_Fam(Famille,K,A);
+--   Visu_Fam(A);
+--   Visu_Facture_Fam(A);
+
+--   Visu_Facture_Veille(Liste);
+--   Visu_Facture_Bs(Liste);
+--   Visu_Planning_Bs(Liste);
+--   Visu_Garde_Jour(Liste,Jour);
+
+--   Supp_Bs(Liste);
+--   Demande_Depart_Bs(Liste);
+--   Visu_Bs(Liste); New_Line;
+
+--   Maj_Planning(Liste);
+--   Visu_P1(Liste);
+--   Visu_P2(Liste);
+
+--   Visu_Garde(Liste);
+
+--   Visu_Fam(A);
+--   Supp_Fam(Liste,A,Jour);
+--   Visu_Fam(A);
+
+
+--   Compte_Creneaux(Liste);
+--   Tri_Creneaux(Liste);
+--   Visu_Bs(Liste); New_Line;
+--   Demande_Garde(Liste,A);
+
+   Nom_Fam(1..5) := "Burma";
+   Bool := Enfants_3_Moins(A,Nom_Fam);
+   IF Bool THEN Put("enfants de - de 3 ans"); ELSE Put("pas d'enfants de - de 3 ans"); END IF;
+
+
+END Test;
+
+

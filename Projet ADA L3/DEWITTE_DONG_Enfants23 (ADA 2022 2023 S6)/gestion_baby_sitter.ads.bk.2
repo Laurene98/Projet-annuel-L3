@@ -1,0 +1,66 @@
+WITH Outils;
+USE Outils;
+
+PACKAGE Gestion_Baby_Sitter IS
+
+   TYPE T_Creneau IS(Matin,Aprem,Soir);
+   SUBTYPE T_Jour_Ouvre IS T_Semaine RANGE Lundi..Samedi;
+
+   TYPE T_Planning IS ARRAY(T_Jour_Ouvre,T_Creneau) OF T_Mot; -- 2 plannings
+
+   TYPE T_Baby_Sitter IS RECORD
+      Nom,Prenom1,Prenom2 : T_Mot := (OTHERS => ' ');
+      Age : Positive; -- >= 16
+      Quitte : Boolean := False;
+      Nb_Creneaux : Integer := 0;
+      Facture_Veille : Integer := 0;
+      Facture_Semaine : Integer := 0;
+      P1,P2 : T_Planning := (OTHERS => (OTHERS => (OTHERS => ' ')));
+   END RECORD;
+
+   TYPE T_Cell;
+   TYPE T_Pteur IS ACCESS T_Cell;
+   TYPE T_Cell IS RECORD
+      Bs : T_Baby_Sitter;
+      Suiv : T_Pteur;
+   END RECORD;
+
+   -- vide le planning sélectionné
+   PROCEDURE Reset_Planning(Planning : IN OUT T_Planning);
+   -- ajoute une baby-sitter à la liste
+   PROCEDURE Ajout_Bs(Bs : OUT T_Baby_Sitter; Liste : IN OUT T_Pteur; Jour: IN T_Semaine);
+   -- enregistre une demande de départ pour la baby-sitter choisie
+   PROCEDURE Demande_Depart_Bs(Liste : IN T_Pteur);
+   -- supprime une baby-sitter de la liste
+   PROCEDURE Supp_Bs(Liste : IN OUT T_Pteur);
+   -- Calcul Nb creneau par bs
+   FUNCTION Nb_Creneau (Bs : T_Baby_Sitter) RETURN Integer;
+   -- affichage des baby-sitters
+   PROCEDURE Visu_Bs(Liste : IN T_Pteur);
+   -- affichage des factures de la veille
+   PROCEDURE Visu_Facture_Veille(Liste : IN T_Pteur);
+   -- affichage des montants dus aux baby-sitters en fin de semaine
+   PROCEDURE Visu_Facture_Bs(Liste : IN T_Pteur);
+   -- affichage de tous les plannings de la semaine en cours
+   PROCEDURE Visu_P1(Liste : IN T_Pteur);
+   -- affichage de tous les plannings de la semaine à venir
+   PROCEDURE Visu_P2(Liste : IN T_Pteur);
+   -- affichage des plannings de la baby-sitter choisie
+   PROCEDURE Visu_Planning_Bs(Liste : IN T_Pteur);
+   -- affichage des gardes prévues dans la journée
+   PROCEDURE Visu_Garde_Jour(Liste : IN T_Pteur; Jour : T_Semaine);
+   -- vide P2 et affecte P2 à P1
+   PROCEDURE Maj_Planning(Liste : IN T_Pteur);
+   -- tri la liste par nom puis par prénom
+   PROCEDURE Tri(Liste : IN T_Pteur);
+   -- tri la liste par nombre de créneaux puis par ordre alphabétique
+   PROCEDURE Tri_Creneaux(Liste : IN T_Pteur);
+   -- affiche les gardes prévues pour la famille choisie
+   PROCEDURE Visu_Garde(Liste : T_Pteur);
+   -- compte le nombre de creneaux de chaque BS pour la semaine prochaine
+   PROCEDURE Compte_Creneaux(Liste : IN T_Pteur);
+
+   PROCEDURE Tri_Creneaux2(Liste : IN T_Pteur);
+
+
+END Gestion_Baby_Sitter;

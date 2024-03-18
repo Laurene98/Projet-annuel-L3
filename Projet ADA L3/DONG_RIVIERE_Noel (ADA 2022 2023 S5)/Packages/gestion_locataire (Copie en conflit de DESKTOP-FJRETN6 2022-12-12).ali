@@ -1,0 +1,118 @@
+V "GNAT Lib v2017"
+A -gnatwu
+A -g
+A -gnato
+A -gnatwa
+A -gnat05
+A -mtune=generic
+A -march=pentium4
+P ZX
+
+RN
+RV NO_ENUMERATION_MAPS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_IO
+RV SPARK_05
+
+U gestion_locataire%b	gestion_locataire.adb	f30fe2f3 NE OO PK KU
+W ada%s			ada.ads			ada.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W interfaces%s		interfac.ads		interfac.ali
+W system%s		system.ads		system.ali
+W system.img_enum_new%s	s-imenne.adb		s-imenne.ali
+W system.val_enum%s	s-valenu.adb		s-valenu.ali
+
+U gestion_locataire%s	gestion_locataire.ads	1116a1eb EE NE OO PK KU
+W gestion_activites%s	gestion_activites.adb	gestion_activites.ali
+W gestion_kdo%s		gestion_kdo.adb		gestion_kdo.ali
+W outils%s		outils.ads		outils.ali
+
+D ada.ads		20170516105950 76789da1 ada%s
+D a-except.ads		20170516105952 291912d5 ada.exceptions%s
+D a-flteio.ads		20170516105952 e18a47a0 ada.float_text_io%s
+D a-inteio.ads		20170516105954 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20170516105948 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20170516105952 119b8fb3 ada.streams%s
+D a-tags.ads		20170516105954 d3a89129 ada.tags%s
+D a-textio.ads		20170516105954 386df5d4 ada.text_io%s
+D a-tiflio.ads		20170516105948 56fbda09 ada.text_io.float_io%s
+D a-tiinio.ads		20170516105950 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20170516105954 31484697 ada.unchecked_conversion%s
+D gestion_activites.ads	20221211162932 34bcaaab gestion_activites%s
+D gestion_kdo.ads	20221210113816 09018c9c gestion_kdo%s
+D gestion_locataire.ads	20221212152838 618b92d6 gestion_locataire%s
+D gestion_locataire.adb	20221212154910 bd284bf5 gestion_locataire%b
+D interfac.ads		20170516105950 5ab55268 interfaces%s
+D i-cstrea.ads		20170516105950 e53d8b8e interfaces.c_streams%s
+D outils.ads		20221211090410 4d20150a outils%s
+D system.ads		20170516105954 32a08138 system%s
+D s-crtl.ads		20170516105948 0ebbdb71 system.crtl%s
+D s-exctab.ads		20170516105954 54135002 system.exception_table%s
+D s-ficobl.ads		20170516105956 078245e4 system.file_control_block%s
+D s-imenne.ads		20170516105950 614c06c0 system.img_enum_new%s
+D s-parame.ads		20170516105954 7e2a0d7f system.parameters%s
+D s-soflin.ads		20170516105950 14e1eb6c system.soft_links%s
+D s-stache.ads		20170516105954 a37c21ec system.stack_checking%s
+D s-stalib.ads		20170516105954 09bd3940 system.standard_library%s
+D s-stoele.ads		20170516105956 2dc34a04 system.storage_elements%s
+D s-traent.ads		20170516105950 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20170516105952 34867c83 system.unsigned_types%s
+D s-valenu.ads		20170516105954 bb1a4295 system.val_enum%s
+D s-wchcon.ads		20170516105954 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 15|1r6 1r18 1r38 2r5 2r17 2r37
+X 3 a-flteio.ads
+20K13*Float_Text_IO[9|46] 15|1w42 2r41
+X 4 a-inteio.ads
+18K13*Integer_Text_IO[10|46] 15|1w22 2r21
+X 8 a-textio.ads
+49K13*Text_IO 471e16 15|1w10 2r9
+166U14*New_Line 15|86s61
+242U14*Put 15|92s10 93s10 94s10 119s13 119s47 220s13
+249U14*Get_Line 15|98s16
+263U14*Put_Line 15|86s7 105s22 108s19 112s41
+X 12 gestion_activites.ads
+6K9*gestion_activites 17e22 14|1w14 2r13
+8E6*T_activite 8e94 14|6r51 26r60 29r41 15|8r63 78r41 81r10 99r29 105r32
+. 119r18
+9A6*T_Gestion_Activite(integer)<18|5E9><8E6> 14|26r34 29r71 15|8r37 78r71
+14U11*Affich_Tab 15|87s7
+X 13 gestion_kdo.ads
+1K9*Gestion_KDO 15e16 14|1w33 2r32
+3E9*T_KDO 3e65 14|13r13
+X 14 gestion_locataire.ads
+4K9*Gestion_locataire 39l5 39e22 15|4b14 274l5 274t22
+6A6*T_Activite_Locataire(12|8E6)<18|5E9> 15r20 29r103 15|78r103 118r13
+8R6*T_info_locataire 19e12 21r51
+9a4*Nom_Locataire{18|4A12}
+11a4*Prenom_Locataire{18|4A12}
+13e4*Cadeau{13|3E9}
+15a4*Activite_Jour{6A6}
+17b4*Veille{boolean}
+21A6*T_Locataire(8R6)<integer>
+26V10*Verif_Dispo{boolean} 26>23 26>54 26>72 15|8b13 18l8 18t19 102s22
+26a23 Nbr_Place{12|9A6} 15|8b26 12r10
+26e54 Acti{12|8E6} 15|8b57 12r25
+26e72 Sem{18|5E9} 15|8b75 12r20
+29U11*Saisie_Act 29=23 29=53 29<91 15|78b11 123l8 123t18
+29e23 Choix_Act{12|8E6} 15|78b23 99m16 103r31 104r35 104r62
+29a53 Nbr_Place{12|9A6} 15|78b53 87m19 102r35 104m22 104r49
+29a91 Choix{6A6} 15|78b91 103m19 105r49 119r35
+33U11*Affichage_Locataire 15|219b14 221l8 221t27
+X 15 gestion_locataire.adb
+9b7 Dispo{boolean} 13m10 15m10 17r15
+79a4 Mot{18|4A12} 98m26 99r47
+80i4 K{integer} 98m30 99r54
+81e4 Acti{12|8E6} 102r46
+82e4 Sem{18|5E9} 102r52
+89e11 I{18|5E9} 90r20 93r31 103r25 104r32 104r59 105r55
+118e8 P{18|5E9} 119r41
+X 18 outils.ads
+2K9*Outils 14|1w6 2r5 18|9e11
+4A12*T_Mot{string}<integer> 14|9r20 11r23 15|79r10
+5E9*T_Semaine 14|6r37 26r78 15|8r81 82r9 89r16 93r15 18|5e79
+5n63*Samedi{5E9} 15|90r24
+

@@ -1,0 +1,62 @@
+WITH Ada.Integer_Text_IO, Ada.Text_IO, Outils, Gestion_Baby_Sitter, Gestion_Famille, Initialisation;
+USE Ada.Integer_Text_IO, Ada.Text_IO, Outils, Gestion_Baby_Sitter, Gestion_Famille, Initialisation;
+
+PROCEDURE Testl IS
+   Jour : T_Semaine := Mercredi;
+   Liste : T_Pteur;
+   A : T_Arbre;
+   Famille : T_Famille;
+   K : Integer;
+   Bs : T_Baby_Sitter;
+   N: Integer;
+   Age_Enfants : T_Age_Enf;
+   Fac, m: Integer;
+
+
+BEGIN
+   Init_Bs(Liste);
+   Init_Famille(A);
+--   Jour_Suiv(Jour);
+--   Put(T_Semaine'Image(Jour)); New_Line;
+
+--   Ajout_Bs(Bs,Liste);
+--   Ajout_Bs(Bs,Liste);
+
+--   Init_Bs(Liste);
+--   Init_Famille(A);
+
+--   Visu_Bs(Liste); New_Line;
+--   Tri(Liste); New_Line;
+--   Visu_Bs(Liste); New_Line;
+
+--   Visu_P1(Liste);
+--   Visu_P2(Liste);
+
+--   New_Fam(Famille,K);
+--   Insert_Fam(Famille,K,A);
+--   New_Fam(Famille,K);
+--   Insert_Fam(Famille,K,A);
+
+   Famille.Nom(1..10) := "Montalbano";
+   Visu_Fam(A);
+   Cal_Facture_Fam (Famille, Fac);
+   New_Line;
+   Put (fac);
+
+
+            IF Liste = NULL THEN
+            M := 0;
+         ELSE
+            FOR I IN T_Jour_Ouvre'RANGE LOOP
+               IF Liste.Bs.P1(I,Matin) = Famille.Nom THEN
+                  M := M + 1;
+               END IF;
+            END LOOP;
+            Nb_Matin (Famille, Liste.suiv, M, Matin);
+         END IF;
+
+
+
+END Testl;
+
+

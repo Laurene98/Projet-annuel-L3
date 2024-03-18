@@ -1,0 +1,13 @@
+WITH Outils, Gestion_Baby_Sitter, Gestion_Famille;
+USE Outils, Gestion_Baby_Sitter, Gestion_Famille;
+
+PACKAGE Gestion_Garde IS
+
+   PROCEDURE Demande_Garde(Liste : T_Pteur; A : T_Arbre);
+   PROCEDURE Annule_Garde(Liste : T_Pteur; A : T_Arbre; Jour : T_Semaine);
+   PROCEDURE Supp_Fam(Liste : T_Pteur; A : IN OUT T_Arbre; Jour : T_Semaine);
+
+
+
+FUNCTION Last_Bs (A: T_Arbre) RETURN T_Pteur;
+END Gestion_Garde;

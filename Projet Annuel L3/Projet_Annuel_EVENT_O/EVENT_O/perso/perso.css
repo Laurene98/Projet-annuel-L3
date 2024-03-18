@@ -1,0 +1,46 @@
+.cadre {
+  background-color: rgb(224, 114, 201);
+  width: 50%;
+  border: 2px solid black;
+  border-radius: 20px; 
+  padding: 0.5vw;
+  font-size: larger;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 2vw;  
+}
+
+input[type="submit"] {
+  color: rgb(0, 0, 0); /* couleur du texte */
+  background-color: rgb(224, 114, 201);
+  border: none; /* suppression de la bordure */
+  padding: 1.6vw; /* marge intérieure */
+  width: 100%;
+  text-align: center; /* centrage du texte */
+  text-decoration: none; /* suppression des décorations de lien */
+  display: inline-block; /* affichage en ligne */
+  font-size: 2.4vw; /* taille de la police */
+  cursor: pointer; /* curseur de la souris */
+  border-radius: 1.5vw; /* arrondi des coins */
+  font-weight: bold
+  }
+
+  .login-form input[type="submit"] {
+  background-color: #dd6baa;
+  }
+
+  .login-form input[type="submit"]:hover {
+    background-color: #ad5e8b;
+  }
+
+  .signup-redirect input[type="submit"] {
+  background-color: rgb(216, 147, 170);
+  }
+
+  .signup-redirect input[type="submit"]:hover {
+    background-color: rgb(175, 120, 138);
+  }

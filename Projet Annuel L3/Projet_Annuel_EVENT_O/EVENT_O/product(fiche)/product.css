@@ -1,0 +1,169 @@
+.top-page {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.back {
+  padding-bottom: 1vw;
+  text-align: left;
+}
+
+.back label[for="back-txt"] {
+  font-family: Arial, sans-serif;
+  font-size: 2vw;
+  margin-left: 5px;
+}
+
+.back button {
+  border: solid #ffffff;
+  background-color: #ffffff;
+  margin-top: 0px;
+  cursor: pointer;
+  transform: translateY(0.3vw);
+}
+
+h1 {
+  font-family: cursive;
+  font-weight: bold;
+  font-size: 3.5vw;
+  vertical-align: middle;
+  display: inline-block;
+  margin: 5px;
+  margin-right: 25vw;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  font-family: cursive;
+  text-align: center;
+  font-weight: bold;
+  font-size: 3vw;
+}
+
+.column-left {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.column-right {
+  flex: 1;
+  padding-right: 20px;
+}
+
+label[for="commentaire"] {
+  font-family: cursive;
+  text-align: center;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 3vw;
+}
+
+label[for="pseudo"] {
+  font-size: 1.8vw;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.pseudo {
+  margin-top: 3vw;
+}
+
+.pseudo p {
+  font-size: 2vw;
+  font-weight: bold;
+}
+
+p {
+  font-size: 1.5vw;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+}
+
+.column-right img {
+  box-align: center;
+  width: auto;
+}
+
+input[type="submit"] {
+  background-color: rgb(231, 177, 132);
+  width: auto;
+  border: 2px solid black;
+  border-top-left-radius: 20px; border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; 
+  margin: 20px 20px 20px 20px;
+  padding: 0px 0px 0px 0px;
+  cursor: pointer;
+  font-size: 100%;
+}
+
+.cadre2 {
+  width: 90%;
+  justify-content: center;
+  margin-left: 5vw;
+  font-size: 3vw;
+  font-family: cursive;
+  vertical-align: middle;
+  border: 4px solid black;
+  margin-top: 10px;
+  padding-bottom: 1vw;
+}
+
+.cadre2 img {
+  width: 30%;
+}
+
+.quantity {
+  display: inline-flex;
+}
+
+.quantity label[for="quantity"] {
+  display: block;
+  margin: 0%;
+  font-weight: bold;
+  font-size: 3vw;
+  text-align: center;
+  width: 100%;
+}
+
+.quantity input[id="quantity"] {
+  align-items: center;
+  border-radius: 2vw; 
+  font-size: 100%;
+  font-weight: bold;
+  width: 20%;
+}
+
+.btn-container {
+  text-align: right
+}
+
+button {
+  color: rgb(0, 0, 0); /* couleur du texte */
+  background-color: #dd6baa;
+	border: none; /* suppression de la bordure */
+	padding: 1vw; /* marge intérieure */
+	width: 30%;
+	text-align: center; /* centrage du texte */
+	text-decoration: none; /* suppression des décorations de lien */
+	display: inline-block; /* affichage en ligne */
+	font-size: 1.8vw; /* taille de la police */
+	cursor: pointer; /* curseur de la souris */
+	border-radius: 1.5vw; /* arrondi des coins */
+	font-weight: bold
+}
+
+.button:hover {
+  background-color: #ad5e8b;
+}
+
+.comm {
+  text-align: left;
+  width: 100%;
+}

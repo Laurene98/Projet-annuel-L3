@@ -1,0 +1,177 @@
+V "GNAT Lib v2017"
+M P W=b
+A -gnatwu
+A -g
+A -gnato
+A -gnatwa
+A -gnat05
+A -mtune=generic
+A -march=pentium4
+P ZX
+
+RN
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_IO
+RV NO_DEFAULT_INITIALIZATION
+RV SPARK_05
+
+U noel%b		noel.adb		71672e04 NE OO SU KU
+W ada%s			ada.ads			ada.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W gestion_activites%s	gestion_activites.adb	gestion_activites.ali
+W gestion_elfes%s	gestion_elfes.adb	gestion_elfes.ali
+W gestion_fichier%s	gestion_fichier.adb	gestion_fichier.ali
+W gestion_igloo%s	gestion_igloo.adb	gestion_igloo.ali
+W gestion_kdo%s		gestion_kdo.adb		gestion_kdo.ali
+W gestion_locataire%s	gestion_locataire.adb	gestion_locataire.ali
+W outils%s		outils.ads		outils.ali
+
+D ada.ads		20170516105950 76789da1 ada%s
+D a-except.ads		20170516105952 291912d5 ada.exceptions%s
+D a-flteio.ads		20170516105952 e18a47a0 ada.float_text_io%s
+D a-inteio.ads		20170516105954 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20170516105948 e4a01f64 ada.io_exceptions%s
+D a-sequio.ads		20170516105950 10138ec7 ada.sequential_io%s
+D a-stream.ads		20170516105952 119b8fb3 ada.streams%s
+D a-tags.ads		20170516105954 d3a89129 ada.tags%s
+D a-textio.ads		20170516105954 386df5d4 ada.text_io%s
+D a-tiflio.ads		20170516105948 56fbda09 ada.text_io.float_io%s
+D a-tiinio.ads		20170516105950 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20170516105954 31484697 ada.unchecked_conversion%s
+D gestion_activites.ads	20230203082210 60c8cb12 gestion_activites%s
+D gestion_elfes.ads	20221214110032 738274a5 gestion_elfes%s
+D gestion_fichier.ads	20221214093906 31aea1d6 gestion_fichier%s
+D gestion_igloo.ads	20221214083102 73914c74 gestion_igloo%s
+D gestion_kdo.ads	20221212184620 21387e47 gestion_kdo%s
+D gestion_locataire.ads	20221214082230 27a8322f gestion_locataire%s
+D interfac.ads		20170516105950 5ab55268 interfaces%s
+D i-cstrea.ads		20170516105950 e53d8b8e interfaces.c_streams%s
+D noel.adb		20221215142536 440e1ea3 noel%b
+D outils.ads		20221211090410 4d20150a outils%s
+D system.ads		20170516105954 32a08138 system%s
+D s-crtl.ads		20170516105948 0ebbdb71 system.crtl%s
+D s-exctab.ads		20170516105954 54135002 system.exception_table%s
+D s-ficobl.ads		20170516105956 078245e4 system.file_control_block%s
+D s-parame.ads		20170516105954 7e2a0d7f system.parameters%s
+D s-sequio.ads		20170516105952 fc7560a7 system.sequential_io%s
+D s-soflin.ads		20170516105950 14e1eb6c system.soft_links%s
+D s-stache.ads		20170516105954 a37c21ec system.stack_checking%s
+D s-stalib.ads		20170516105954 09bd3940 system.standard_library%s
+D s-stoele.ads		20170516105956 2dc34a04 system.storage_elements%s
+D s-traent.ads		20170516105950 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20170516105952 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20170516105954 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 21|1r6 1r18 1r38 2r5 2r17 2r37
+X 3 a-flteio.ads
+20K13*Float_Text_IO[10|46] 21|1w42 2r41
+X 4 a-inteio.ads
+18K13*Integer_Text_IO[11|46] 21|1w22 2r21
+X 9 a-textio.ads
+49K13*Text_IO 471e16 21|1w10 2r9
+166U14*New_Line 21|33s63 36s49 46s44 46s54 55s7 56s7 66s69 74s53 74s64 86s54
+. 86s64 88s54 88s64 90s56 90s66 92s76 93s46 93s56 95s64 96s51 96s61 101s13
+. 102s13 109s62 114s53 114s64 126s54 126s64 128s54 128s64 133s13 134s13 141s65
+. 146s53 146s64 159s22 159s32 164s22 164s32 167s76 168s46 168s56 169s76 169s86
+. 175s13 176s13 183s78 188s53 188s64 200s71 202s44 203s75 204s75 206s22 206s32
+. 210s22 210s32 215s13 216s13 224s13 225s13 227s13 227s23 234s56 243s53 243s64
+. 256s67 256s77 258s50 258s60 267s13 268s13 275s56 280s53 280s64 293s22 293s32
+. 296s22 296s32 301s13 302s13
+169U14*Skip_Line 21|50s29 52s32 78s35 80s41 118s32 120s41 150s34 152s41 192s35
+. 194s41 247s32 249s41 284s33 286s41
+263U14*Put_Line 21|33s4 36s7 37s7 38s7 39s7 40s7 41s7 42s7 43s7 44s7 46s7
+. 52s43 66s16 67s16 68s16 69s16 70s16 71s16 72s16 74s16 80s52 92s22 95s22
+. 109s16 110s16 111s16 112s16 114s16 120s52 141s16 142s16 143s16 144s16 146s16
+. 152s52 166s22 167s22 183s16 184s16 185s16 186s16 188s16 194s52 234s16 235s16
+. 236s16 237s16 238s16 239s16 240s16 241s16 243s16 249s52 255s22 275s16 276s16
+. 277s16 278s16 280s16 286s52 312s16
+298X4*Data_Error 21|52r18 80r27 120r27 152r27 194r27 249r27 286r27
+X 11 a-tiinio.ads
+56U14*Get 21|50s13[4|18] 78s22[4|18] 118s22[4|18] 150s22[4|18] 192s22[4|18]
+. 247s22[4|18] 284s22[4|18]
+X 13 gestion_activites.ads
+7K9*gestion_activites 18e22 21|1w65 2r64
+9E6*T_activite 9e100 21|16r16
+10A6*T_Gestion_Activite(integer)<22|5E9><9E6> 21|9r15
+13U11*Initial_Act 21|24s4
+15U11*Affich_Tab 21|93s22 168s22
+X 14 gestion_elfes.ads
+5K9*Gestion_Elfes 23e18 21|1w147 2r147
+7A9*T_Nbrper_Elfes(integer)<22|5E9> 21|13r19
+16A6*T_Elfes(10R6)<integer> 21|12r13
+19U11*Elfes 21|29s4
+20U11*Liste_Elfes 21|28s4
+21U11*Visualisation_Elfes 21|256s22
+X 15 gestion_fichier.ads
+4K9*Gestion_Fichier 11e23 21|1w84 2r83
+8U14*Enregistrer_Reg_Igloo 21|292s22
+9U14*Restaurer_Reg_Igloo 21|295s22
+X 16 gestion_igloo.ads
+6K9*Gestion_Igloo 38e18 21|1w132 2r132
+10R9*T_Info_igloo 16e15 21|14r11
+18A6*T_Igloo(10R9)<integer> 21|15r16
+23U11*Non_Cree 21|26s4
+24U11*Crea_Igloo 21|126s22
+25U11*Reservation_Igloo 21|200s22
+26U11*Affich_Igloo 21|90s22
+27U11*Liste_Loca 21|86s22
+29U11*Initial_Igloo 21|27s4
+30U11*Veille 21|258s22
+31U11*ListeIgloo 21|88s22 128s22
+32U11*Recherche 21|163s22 208s22
+33U11*verifloc_ins 21|158s22
+36U11*Inscription_Veille 21|205s22
+X 17 gestion_kdo.ads
+1K9*Gestion_KDO 15e16 21|1w119 2r119
+3E9*T_KDO 3e65 21|18r16
+4A9*T_Gestion_KDO(integer)<3E9> 21|7r15 8r15
+7U14*Affichage_Stock 21|96s22 226s13
+8U14*Init_Stock 21|25s4
+9U14*Distribution_KDO 21|203s22
+10U14*Reassort 21|223s13
+X 18 gestion_locataire.ads
+4K9*Gestion_locataire 42e22 21|1w100 2r100
+6A6*T_Activite_Locataire(13|9E6)<22|5E9> 21|10r12
+8R6*T_info_locataire 19e12 21|11r13
+27U11*Saisie_Act 21|169s22
+30U11*Saisie_Loc 21|202s22
+31U11*Affil_KDO 21|204s22
+X 21 noel.adb
+5U11*Noel 5b11 313l5 313t9
+6i4 Mon_choix{integer} 50m17 60r9
+6i14 igl{integer} 118m26 124r21
+6i19 visual{integer} 78m26 84r21
+6i27 activ{integer} 150m26 156r21
+6i34 sta{integer} 247m26 253r21
+6i38 Numigloo{integer} 158m64 158r64 163m62 163r62 200m60 200r60 205m62 205r62
+. 208m62 208r62
+6i48 Numloc{integer} 158m74 158r74 163m72 163r72 205m71 205r71 208m72 208r72
+6i56 reserv{integer} 192m26 198r21
+6i64 sauv{integer} 284m26 290r21
+7a4 Nbr_Stock{17|4A9} 25m16 96r39 203m52 203r52 204m44 204r44 223m23 223r23
+. 226r30
+8a4 Bilan_KDO{17|4A9} 203m63 203r63 204m63 204r63
+9a4 Nbr_Place{13|10A6} 24m17 24r17 93r34 158m93 158r93 168r34 169m45 169r45
+10a4 Choix{18|6A6} 158m104 169m56
+11r4 Infoloc{18|8R6} 158m36 158r36 163m33 163r33 202m34 202r34 204m55 204r55
+. 208m33 208r33
+12a4 Liste_E{14|16A6} 28m17 28r17 29m11 256r43
+13a4 Nbr_Pers_Jour{14|7A9} 29m20 29r20 256m51 256r51
+14r4 Igloo{16|10R9} 26m14 26r14 27m19 27r19 86m34 86r34 88m34 88r34 90m36
+. 90r36 126m34 126r34 128m34 128r34 158m44 158r44 163m42 163r42 200m41 200r41
+. 205m42 205r42 208m42 208r42 258m30 258r30
+15a4 Liste_Igloo{16|18A6} 26m20 26r20 27m25 27r25 86m40 86r40 88m40 88r40
+. 90m42 90r42 126m40 126r40 128m40 128r40 158m51 158r51 163m49 163r49 200m47
+. 200r47 205m49 205r49 208m49 208r49 258m36 258r36 292m44 295m42
+16e4 Choix_Act{13|9E6} 158m82 158r82 169m34 169r34
+17e4 Sem{22|5E9} 158r111 169r63
+17e9 Jours{22|5E9} 158r116 169r68
+18e4 KDO_Tirage{17|3E9} 203m40 203r40 204m33 204r33
+X 22 outils.ads
+2K9*Outils 21|1w57 2r56 22|9e11
+5E9*T_Semaine 21|17r17 22|5e79
+

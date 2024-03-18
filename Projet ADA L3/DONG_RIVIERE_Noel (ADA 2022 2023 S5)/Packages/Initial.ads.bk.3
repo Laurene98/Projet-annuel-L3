@@ -1,0 +1,46 @@
+PACKAGE Initial IS
+   SUBTYPE T_Mot IS String (1..30);
+   TYPE T_Semaine IS (Lundi, Mardi, Mercredi, Jeudi, Vendredi,Samedi,Dimanche);
+
+   TYPE T_Activite IS (Raquette, Patinoire, Traineau, Biscuits , Deco, Igloos, Rennes, Ateliers );
+   TYPE T_Gestion_Activite IS ARRAY (T_Activite, T_Semaine) OF Integer ;
+   TYPE T_Stats_Activite IS ARRAY (Raquette..Ateliers) OF Integer;
+
+   TYPE T_KDO IS (Boissons, Biscuits, Chocolats, Fruits_Confits);
+   TYPE T_Gestion_KDO IS ARRAY (T_KDO) OF Integer;
+
+   NBE : CONSTANT Integer := 8 ;
+   TYPE T_Nbrper_Elfes IS ARRAY (T_Semaine) OF Integer ;
+   TYPE T_Info_Elfes IS RECORD
+      Nom_Elfes : T_Mot ;
+      Activite : T_Activite ;
+      Nbr_Pers_Jour : T_Nbrper_Elfes ;
+   END RECORD ;
+   TYPE T_Elfes IS ARRAY (Integer RANGE 1..NBE) OF T_Info_Elfes;
+
+
+   TYPE T_Activite_Locataire IS ARRAY (T_Semaine) OF T_Activite ;
+   TYPE T_Info_Locataire IS RECORD
+      Nom_Locataire : T_Mot ;
+      Prenom_Locataire : T_Mot ;
+      Cadeau : T_KDO ;
+      Activite_Jour : T_Activite_Locataire ;
+      Veille : Boolean ;
+   END RECORD ;
+   TYPE T_Locataire IS ARRAY (Integer RANGE 1..6) OF T_Info_Locataire ;
+
+
+   NBI : CONSTANT Integer := 7;
+   TYPE T_Info_Igloo IS RECORD
+      Id_Igloo : Integer ;
+      Capacite : Integer ;
+      Liste_Locataires : T_Locataire ;
+      Nb_locataire : integer;
+   END RECORD ;
+   TYPE T_Igloo IS ARRAY (Integer RANGE 1..NBI) OF T_Info_Igloo;
+
+   PROCEDURE Init_Stock (KDO: IN OUT T_KDO; Nbr_Stock : OUT T_Gestion_KDO);
+   PROCEDURE Disponibilite (Nbr_Place: IN OUT T_Gestion_Activite);
+
+END Initial;
+

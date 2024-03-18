@@ -1,0 +1,36 @@
+WITH Ada.Text_IO,Ada.Integer_Text_IO,Gestion_Locataire, Gestion_Activites, Outils;
+USE Ada.Text_IO,Ada.Integer_Text_IO,Gestion_Locataire, Gestion_Activites, Outils;
+
+
+
+PACKAGE Gestion_Igloo IS
+
+NBI : CONSTANT Integer := 7;
+
+   Type T_Info_igloo is record
+      Id_Igloo : integer ;
+      Capacite : integer ;
+      Liste_locataires : T_locataire ;
+      Nb_Locataire: Integer;
+      Loue:boolean:=false;
+   END RECORD ;
+
+TYPE T_Igloo IS ARRAY (Integer RANGE 1..NBI) OF T_Info_Igloo;
+
+
+
+
+PROCEDURE Non_Cree (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo);
+PROCEDURE Crea_Igloo (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo);
+PROCEDURE Reservation_Igloo (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo; numigloo: IN OUT integer);
+PROCEDURE Affich_Igloo (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo);
+PROCEDURE Liste_Loca (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo);
+FUNCTION Nb_Veille (Igloo: T_Info_Igloo; Liste_Igloo: T_Igloo) RETURN Integer;
+PROCEDURE Initial_Igloo (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo);
+PROCEDURE Veille (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo);
+PROCEDURE ListeIgloo (Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo);
+PROCEDURE Recherche (Infoloc : IN OUT T_Info_Locataire ;Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo; Numigloo : IN OUT Integer; Numloc : IN OUT Integer);
+PROCEDURE verifloc_ins (Infoloc : IN OUT T_Info_Locataire ;Igloo: IN OUT T_Info_Igloo; Liste_Igloo: IN OUT T_Igloo; numigloo : IN OUT integer; numloc : IN OUT integer; Choix_Act: IN OUT T_Activite; Nbr_Place: IN OUT T_Gestion_Activite; Choix : OUT T_Activite_Locataire; Sem: IN T_Semaine; Jours : IN T_Semaine);
+
+END Gestion_Igloo;
+

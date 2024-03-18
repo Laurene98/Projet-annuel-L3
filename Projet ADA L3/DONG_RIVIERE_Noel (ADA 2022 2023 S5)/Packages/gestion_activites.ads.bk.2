@@ -1,0 +1,19 @@
+--WITH Ada.Text_IO,Ada.Integer_Text_IO, outils;
+--USE Ada.Text_IO,Ada.Integer_Text_IO, outils;
+WITH outils;
+USE outils;
+
+
+PACKAGE gestion_activites IS
+
+Type T_activite is (Raquette, Patinoire, Traineau, Biscuits , Deco, Igloos, Rennes, Ateliers, Rien);
+TYPE T_Gestion_Activite IS ARRAY (T_Semaine, T_Activite ) OF Integer ;
+TYPE T_Stats_Activite IS ARRAY (T_Activite) OF Integer;
+
+PROCEDURE Initial_Act (Nbr_Place: IN T_Gestion_Activite);
+PROCEDURE Affichage_Dispo (Nbr_Place: IN OUT T_Gestion_Activite);
+PROCEDURE Affich_Tab (Nbr_Place: IN T_Gestion_Activite);
+--PROCEDURE Gestion_Stat (Nbr_Place: IN OUT T_Gestion_Activite; Inscrit : IN OUT T_Gestion_Activite; Tot_Ins : IN OUT  T_Stats_Activite);
+
+END Gestion_activites;
+

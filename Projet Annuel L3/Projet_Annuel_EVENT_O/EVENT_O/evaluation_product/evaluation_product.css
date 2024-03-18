@@ -1,0 +1,135 @@
+.top-page {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-top: 20px;
+    margin-bottom: 10vh;
+    text-align: center;
+    width: 100%;
+  }
+
+  .back {
+    float: left;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+  }
+
+  .back label[for="back-txt"] {
+    font-family: Arial, sans-serif;
+    font-size: 2vw;
+    margin-left: 0px;
+  }
+
+  .back button {
+    border: solid #ffffff;
+    background-color: #ffffff;
+    margin-top: 0px;
+    cursor: pointer;
+    transform: translateY(5px);
+  }
+
+  h1 {
+    font-family: cursive;
+    font-weight: bold;
+    font-size: 3.5vw;
+    vertical-align: middle;
+    display: inline-block;
+    margin: 5px;
+    margin-right: 20%;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 4vh;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+  }
+
+  th {
+    padding-left: 2vh;
+    padding-right: 2vh;
+  }
+
+  .top-table {
+    font-size: 2.5vw;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 2.5vw;
+  }
+
+  h3 {
+    font-weight: normal;
+    font-size: 2vw;
+  }
+
+  p {
+    font-weight: normal;
+    font-size: 1.8vw;
+  }
+
+  .article {
+    width: 30%;
+  }
+
+
+  input[type="radio"] {
+	appearance: none;
+  	background-color: #ffffff;
+  	margin-right: 3px;
+  	font: inherit;
+	cursor: pointer;
+  	width: 2.3vw;
+  	height: 2.3vw;
+  	border: 0.2vw solid black;
+  	border-radius: 2vw;
+    transform: translateY(0.5vw);
+  }
+
+  input[type="radio"]:checked{
+	transform-origin: bottom left;
+	background-color: black;
+	clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%)
+  }
+
+  ul {
+    list-style: none;
+    align-items: center;
+  }  
+
+.review {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+textarea {
+    width: 70%;
+    height: 20vh;
+    font-size: 1.5vw;
+}
+
+label[for="rep"] {
+    font-size: 1.5vw;
+}
+
+input[type="submit"] {
+	color: rgb(0, 0, 0); /* couleur du texte */
+    background-color: #dd6baa;
+	border: none; /* suppression de la bordure */
+	padding: 1.5vw; /* marge intérieure */
+	width: 30%;
+    margin-top: 8vh;
+	text-align: center; /* centrage du texte */
+	text-decoration: none; /* suppression des décorations de lien */
+	display: inline-block; /* affichage en ligne */
+	font-size: 2.2vw; /* taille de la police */
+	cursor: pointer; /* curseur de la souris */
+	border-radius: 1.5vw; /* arrondi des coins */
+	font-weight: bold
+  }
+
+  input[type="submit"]:hover {
+    background-color: #ad5e8b;
+  }
+

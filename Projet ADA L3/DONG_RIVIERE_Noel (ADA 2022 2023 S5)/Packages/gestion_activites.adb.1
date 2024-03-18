@@ -1,0 +1,51 @@
+WITH Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Outils, Gestion_KDO, Gestion_Activites, Gestion_Elfes, Gestion_Locataire;
+USE Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Outils, Gestion_KDO, Gestion_Activites, Gestion_Elfes, Gestion_Locataire;
+
+
+PACKAGE BODY Gestion_activites IS
+
+
+      PROCEDURE Affichage_Dispo (Nbr_Place: IN OUT T_Gestion_Activite) IS
+
+      BEGIN
+
+         FOR I IN T_Semaine'RANGE LOOP
+            FOR J IN T_Activite'RANGE LOOP
+               IF Nbr_Place(I,J)<=0 THEN Put (T_Activite'Image(J)); Put("plus de disponibilite pour: "); Put(T_Semaine'Image(I)); New_Line;
+               ELSE Put(T_Activite'Image(J)); Put("les jours où il y a des disponibilites sont:"); Put(T_Semaine'Image(I)); Put("le nombre de place restantes sont: "); Put(Nbr_Place(I,J)); New_Line;
+               END IF;
+            END LOOP;
+         END LOOP;
+      END Affichage_Dispo;
+
+
+
+
+ ------------------------------------------------------------------------------------------
+
+
+--      PROCEDURE Gestion_Stat-- activite la plus demandee
+--
+--      PROCEDURE Affichage_Stat-- activite la plus demandee
+--
+--
+
+
+
+
+
+
+
+END Reservation_Activite;
+
+--End Gestion_activites;
+
+--         -- FOR I IN T_Gestion_Activite'RANGE LOOP
+--            -- FOR J IN T_Gestion_Activite'RANGE LOOP
+--             --  Put ("Quelle activite voulez vous reserver?");
+--              -- Put (Choix(J));
+--             --Skip_line;
+--           -- END LOOP;
+--         --END LOOP;
+
+

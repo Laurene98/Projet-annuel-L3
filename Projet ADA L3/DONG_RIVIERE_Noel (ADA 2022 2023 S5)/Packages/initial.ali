@@ -1,0 +1,68 @@
+V "GNAT Lib v2017"
+A -gnatwu
+A -gnat05
+A -gnatc
+A -mtune=generic
+A -march=pentium4
+P NO FX
+
+RN
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U initial%s		initial.ads		ecd3fba6 EE OO PK KU
+
+D initial.ads		20221210113154 ecd3fba6 initial%s
+X 1 initial.ads
+1K9*Initial 45l5 45e12
+2A12*T_Mot{string}<integer> 15r19 24r23 25r26
+3E9*T_Semaine 3e79 6r50 13r34 22r40
+3n23*Lundi{3E9}
+3n30*Mardi{3E9}
+3n37*Mercredi{3E9}
+3n47*Jeudi{3E9}
+3n54*Vendredi{3E9}
+3n63*Samedi{3E9}
+3n70*Dimanche{3E9}
+5E9*T_Activite 5e98 6r38 16r18 22r54
+5n24*Raquette{5E9} 7r36
+5n34*Patinoire{5E9}
+5n45*Traineau{5E9}
+5n55*Biscuits{5E9}
+5n66*Deco{5E9}
+5n72*Igloos{5E9}
+5n80*Rennes{5E9}
+5n88*Ateliers{5E9} 7r46
+6A9*T_Gestion_Activite(integer)<5E9><3E9> 43r47
+7A9*T_Stats_Activite(integer)<5E9>
+9E9*T_KDO 9e65 10r33 26r16
+9n19*Boissons{9E9}
+9n29*Biscuits{9E9}
+9n39*Chocolats{9E9}
+9n50*Fruits_Confits{9E9}
+10A9*T_Gestion_KDO(integer)<9E9>
+12i4*NBE{integer} 19r44
+13A9*T_Nbrper_Elfes(integer)<3E9> 17r23
+14R9*T_Info_Elfes 18e15 19r52
+15a7*Nom_Elfes{2A12}
+16e7*Activite{5E9}
+17a7*Nbr_Pers_Jour{13A9}
+19A9*T_Elfes(14R9)<integer>
+22A9*T_Activite_Locataire(5E9)<3E9> 27r23
+23R9*T_Info_Locataire 29e15 30r54
+24a7*Nom_Locataire{2A12}
+25a7*Prenom_Locataire{2A12}
+26e7*Cadeau{9E9}
+27a7*Activite_Jour{22A9}
+28b7*Veille{boolean}
+30A9*T_Locataire(23R9)<integer> 37r26
+33i4*NBI{integer} 40r44
+34R9*T_Info_Igloo 39e15 40r52
+35i7*Id_Igloo{integer}
+36i7*Capacite{integer}
+37a7*Liste_Locataires{30A9}
+38i7*Nb_locataire{integer}
+40A9*T_Igloo(34R9)<integer>
+43U14*Disponibilite 43=29
+43a29 Nbr_Place{6A9}
+

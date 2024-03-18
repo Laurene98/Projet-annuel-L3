@@ -1,0 +1,88 @@
+body, html {
+    margin: 0;
+    padding: 0;
+  }
+  .texte{
+   margin:auto;
+   justify-content: left;
+    
+  }
+  .m-center{
+    position:absolute;
+    z-index: 1;
+    margin: 0%;/*marge en haut de la page*/
+    padding: 0%;
+    color:black ;
+    text-transform: uppercase;
+    font-weight: 100;
+    font-size: x-large;
+    top:15px;
+    right:350px;
+  }
+  .m-link1{
+    position:absolute;
+    z-index: 1;
+    text-transform: uppercase;  
+    font-weight: 700;
+    padding: 0;margin:0 10px;
+    top:50px;
+    text-decoration: none;
+    color:black;
+  }
+  .m-link2{
+    position:absolute;
+    z-index: 1;
+    text-transform: uppercase;  
+    font-weight: 700;
+    padding: 0;margin:0 -80px;
+    top:50px;
+    right:970px;
+    text-decoration: none;
+    color:black;
+  }
+
+  .m-left{
+    float: left;
+    z-index: 1;
+  }
+  .container{
+    width: 90%;
+    margin: auto;
+    position: relative;
+  }
+  .logo1{
+    z-index: 1;
+    position: relative;
+    float: right;
+    width: 100px ;
+    top: -350px; 
+  }
+  .Barre{
+    z-index: 1;
+    position: relative;
+    float: right;
+    width: 170px ;
+    top: -350px; 
+  }
+  .lien{
+  text-decoration: none;
+   color:black;
+   text-transform: uppercase;  
+   font-weight: 700;
+   padding: 0;margin:0 10px; 
+  }
+  .image{
+    background-size:cover ;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  button {
+    background-color: white ;
+    color: #000000;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #010101;
+    padding: 10px 20px;
+    cursor: pointer;  
+  }

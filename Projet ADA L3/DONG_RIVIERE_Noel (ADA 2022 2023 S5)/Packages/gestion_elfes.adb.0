@@ -1,0 +1,76 @@
+WITH Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Gestion_Locataire, Outils;
+
+USE Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Gestion_Locataire, Outils;
+
+
+
+PACKAGE BODY Gestion_Elfes IS
+
+
+------  Procedure organisation_elfes-- compte le nombre de personne par jours
+
+PROCEDURE Elfes (Mon_Elfes:out T_elfes; Nbr_Pers_Jour: IN OUT T_Nbrper_Elfes) IS
+
+ Begin
+
+    --  Legolas
+--    Put("Tableau de Legolas: ");
+--   T_Elfes(1).Nbr_Pers_Jour := (0,0,0,0,8); Put(T_Elfes(1).Nbr_Pers_Jour);
+    --T_Elfes(1).Activite := Rennes;
+--    Nbr_Pers_Jour (mon_elfes(1)):=(0,0,0,0,8);
+
+
+    Mon_Elfes(1).Nbr_Pers_Jour := (0,0,0,0,8);
+    Mon_Elfes(2).Nbr_Pers_Jour := (3,1,0,2,1);
+    Mon_Elfes(3).Nbr_Pers_Jour := (3,2,1,5,0);
+    Mon_Elfes(4).Nbr_Pers_Jour := (0,0,7,0,0);
+    Mon_Elfes(5).Nbr_Pers_Jour := (0,2,0,3,0);
+    Mon_Elfes(6).Nbr_Pers_Jour := (0,8,1,0,0);
+    Mon_Elfes(7).Nbr_Pers_Jour := (8,0,3,0,0);
+    Mon_Elfes(8).Nbr_Pers_Jour := (0,0,0,2,3);
+
+put("             ");
+   FOR I IN T_Semaine'RANGE LOOP
+      Put (T_Semaine'Image(I)); put("      ");
+   END LOOP; new_line;
+   FOR J IN T_Nbrper_Elfes'RANGE LOOP
+       Put(Nbr_Pers_Jour(J));
+       EXIT WHEN J=samedi;
+       exit when j=dimanche;
+      END LOOP;
+      New_Line;
+
+
+ END Elfes;
+--
+ PROCEDURE Liste_Elfes (Mon_Elfe: IN T_Info_Elfes; Liste_E:IN OUT  T_Elfes);
+
+ BEGIN
+    Liste_E(1).Nom_Elfes:="Legolas";
+    Liste_E(1).activite:=Renne;
+
+    Liste_E(2).Nom_Elfes:="Elronde";
+     Liste_E(1).activite:=Renne;
+
+
+
+    Liste_E(3).(Nom_Elfes):="Galadriel";
+    Liste_E(4).(Nom_Elfes):="Miriel";
+    Liste_E(5).(Nom_Elfes):="Isildur";
+    Liste_E(6).(Nom_Elfes):="Lorien";
+    Liste_E(7).(Nom_Elfes):="Gilreth";
+    Liste_E(8).(Nom_Elfes):="Legolas";
+
+
+
+
+
+
+
+
+
+
+
+END Gestion_Elfes;
+--
+    put(T_Activite'image( Liste_E(1)); -- remplacer 1 pr i pour boucle

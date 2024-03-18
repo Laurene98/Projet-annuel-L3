@@ -1,0 +1,267 @@
+WITH Ada.Integer_Text_IO, Ada.Text_IO, Ada.Characters.Handling;
+USE Ada.Integer_Text_IO, Ada.Text_IO, Ada.Characters.Handling;
+
+PACKAGE BODY Gestion_Famille IS
+
+   -----------------------------Visualisation de famille ------------------------------------------------
+   PROCEDURE Visu_Fam (A : IN T_Arbre) IS
+   BEGIN
+      IF A /= NULL THEN
+         Put("Nom de la famille : ");
+         Put(A.Famille.Nom);
+         New_Line;
+         Put("Nombre d'enfants : ");
+         Put(A.Famille.Nb_Enfants,2);
+         New_Line;
+         Put("Age du/des enfant(s): ");
+         FOR I IN 1..A.Famille.Nb_Enfants LOOP
+            Put(A.Famille.Age_Enfants(I),3);
+         END LOOP;
+         New_Line;
+         New_Line;
+         Visu_Fam(A.Fg);
+         Visu_Fam(A.Fd);
+      END IF;
+   END Visu_Fam;
+
+   ---------------------------- Saisie d'une famille ----------------------------------------------
+   PROCEDURE New_Fam (Famille : OUT T_Famille; K : OUT Integer) IS
+   BEGIN
+      Put("Saisir le nom de famille : ");
+      LOOP
+         BEGIN
+            Get_Line(Famille.Nom,K);
+            Famille.Nom := To_Lower(Famille.Nom);
+            Famille.Nom(1) := To_Upper(Famille.Nom(1));
+            EXIT;
+         EXCEPTION
+            WHEN Constraint_Error =>
+               Put_Line("Erreur de saisie, recommencez");
+         END;
+      END LOOP;
+      Put("Saisir le nombre d'enfants (entre 1 et 8) : ");
+      LOOP
+         BEGIN
+            Get(Famille.Nb_Enfants);
+            Skip_Line;
+            EXIT WHEN Famille.Nb_Enfants >= 1 AND THEN Famille.Nb_Enfants <= 8;
+         EXCEPTION
+            WHEN Data_Error =>
+               Skip_Line;
+               Put_Line("Erreur de saisie, recommencez.");
+            WHEN Constraint_Error =>
+               Put_Line("Le nombre ne correspond pas, veuillez recommencer.");
+         END;
+      END LOOP;
+      Put("Saisir l'age de chaque enfant (entre 0 et 12) : ");
+      FOR I IN 1..Famille.Nb_Enfants LOOP
+         LOOP
+            BEGIN
+               Get(Famille.Age_Enfants(I));
+               Skip_Line;
+               EXIT WHEN Famille.Age_Enfants(I) >= 0 AND THEN Famille.Age_Enfants(I) <= 12;
+            EXCEPTION
+               WHEN Data_Error =>
+                  Skip_Line;
+                  Put_Line("Erreur de saisie, recommencez.");
+               WHEN Constraint_Error =>
+                  Put_Line("L'age ne correspond pas, veuillez recommencer.");
+            END;
+         END LOOP;
+      END LOOP;
+   END New_Fam;
+
+   -------------------------------- Insérer/Inscription d'une famille ---------------------------------
+   PROCEDURE Insert_Fam (Famille : IN OUT T_Famille; K : Integer; A : IN OUT T_Arbre) IS
+   BEGIN
+      IF A = NULL THEN
+         A := NEW T_Noeud'(Famille, NULL, NULL);
+      ELSIF A.Famille.Nom > Famille.Nom THEN
+         Insert_Fam(Famille, K, A.Fg);
+      ELSIF A.Famille.Nom < Famille.Nom THEN
+         Insert_Fam(Famille, K, A.Fd);
+      ELSE
+         Famille.Nom(K+1) := '2';
+         Insert_Fam(Famille, K, A.Fd);
+      END IF;
+   END Insert_Fam;
+
+   ----------------------- Tri de l'age des enfants (croissant) ---------------------------
+   -- les valeurs -1 seront au début du tableau
+   PROCEDURE Tri_Age (Famille : IN OUT T_Famille) IS
+      Aux : Integer;
+   BEGIN
+      FOR I IN Famille.Age_Enfants'First..Famille.Age_Enfants'Last LOOP
+         FOR J IN REVERSE I+1..Famille.Age_Enfants'Last LOOP
+            IF Famille.Age_Enfants(J) < Famille.Age_Enfants(J-1) THEN
+               Aux := Famille.Age_Enfants(J);
+               Famille.Age_Enfants(J) := Famille.Age_Enfants(J-1);
+               Famille.Age_Enfants(J-1) := Aux;
+            END IF;
+         END LOOP;
+      END LOOP;
+   END Tri_Age;
+
+
+   --------------------- Calcul des factures de famille -----------------------------
+   FUNCTION Nb_Matin (Famille : T_Famille; Liste : T_Pteur) RETURN Integer IS
+      M    : Integer := 0;
+      Tete : T_Pteur := Liste;
+   BEGIN
+      WHILE Tete /= NULL LOOP
+         FOR I IN T_Jour_Ouvre'RANGE LOOP
+            IF Tete.Bs.P1(I,Matin) = Famille.Nom THEN
+               M := M + 1;
+            END IF;
+         END LOOP;
+         Tete := Tete.Suiv;
+      END LOOP;
+      RETURN (M);
+   END Nb_Matin;
+
+   FUNCTION Nb_Aprem (Famille : T_Famille; Liste : T_Pteur) RETURN Integer IS
+      A    : Integer := 0;
+      Tete : T_Pteur := Liste;
+   BEGIN
+      WHILE Tete /= NULL LOOP
+         FOR I IN T_Jour_Ouvre'RANGE LOOP
+            IF Tete.Bs.P1(I,Aprem) = Famille.Nom THEN
+               A := A + 1;
+            END IF;
+         END LOOP;
+         Tete := Tete.Suiv;
+      END LOOP;
+      RETURN (A);
+   END Nb_Aprem;
+
+   FUNCTION Nb_Soir (Famille : T_Famille; Liste : T_Pteur) RETURN Integer IS
+      S    : Integer := 0;
+      Tete : T_Pteur := Liste;
+   BEGIN
+      WHILE Tete /= NULL LOOP
+         FOR I IN T_Jour_Ouvre'RANGE LOOP
+            IF Tete.Bs.P1(I,Soir) = Famille.Nom THEN
+               S := S + 1;
+            END IF;
+         END LOOP;
+         Tete := Tete.Suiv;
+      END LOOP;
+      RETURN (S);
+   END Nb_Soir;
+
+
+   PROCEDURE Cal_Facture_Fam (Famille : IN T_Famille; Liste : T_Pteur; Fac : OUT Integer) IS
+   BEGIN
+      Fac := 0;
+      IF Famille.Age_Enfants(1) < 7 THEN
+         Fac := Fac + (52* Nb_Matin(Famille,Liste)) + (78* Nb_Aprem(Famille,Liste)) + (65* Nb_Soir(Famille,Liste));
+      ELSE
+         Fac := Fac + (40* Nb_Matin(Famille,Liste)) + (60* Nb_Aprem(Famille,Liste)) + (55* Nb_Soir(Famille,Liste));
+      END IF;
+      FOR I IN 2..Famille.Nb_Enfants LOOP
+         IF Famille.Age_Enfants(I) < 7 THEN
+            Fac := Fac + (3 * (Nb_Matin(Famille,Liste) + Nb_Aprem(Famille,Liste) + Nb_Soir(Famille,Liste)));
+         ELSE
+            Fac := Fac + (2 * (Nb_Matin(Famille,Liste) + Nb_Aprem(Famille,Liste) + Nb_Soir(Famille,Liste)));
+         END IF;
+      END LOOP;
+      Put(Fac);
+   END Cal_Facture_Fam;
+
+   ---------------------------- Affichage des factures dues par chaque famille ----------------------------------
+
+   PROCEDURE Visu_Facture_Fam (A : T_Arbre; Liste : T_Pteur; Fac : OUT Integer) IS
+   BEGIN
+      IF A /= NULL THEN
+         Put("Famille ");
+         Put(A.Famille.Nom);
+         Put(" : ");
+         Cal_Facture_Fam (A.Famille,Liste,Fac);
+         Put(" euros");
+         New_Line;
+         Visu_Facture_Fam(A.Fg, Liste, Fac);
+         Visu_Facture_Fam(A.Fd, Liste, Fac);
+      END IF;
+   END Visu_Facture_Fam;
+
+   ---------------------------- Calcul des montants dus à chaque baby-sitter ----------------------------------
+
+   PROCEDURE Calcul_Facture(Liste : T_Pteur; A : T_Arbre; Jour : T_Jour_Ouvre) IS
+
+      PROCEDURE Calcul(Liste : T_Pteur; A : T_Arbre; Nom_Fam : T_Mot; Creneau : T_Creneau) IS
+      BEGIN
+         IF A /= NULL THEN
+            IF A.Famille.Nom = Nom_Fam THEN
+               -- calcul du tarif pour le premier enfant
+               IF Creneau = Matin THEN
+                  IF A.Famille.Age_Enfants(1) IN 0..6 THEN
+                     A.Famille.Facture := A.Famille.Facture + 52;
+                     Liste.Bs.Facture_Veille := Liste.Bs.Facture_Veille + 52;
+                     Liste.Bs.Facture_Semaine := Liste.Bs.Facture_Semaine + 52;
+                  ELSIF A.Famille.Age_Enfants(1) IN 7..12 THEN
+                     A.Famille.Facture := A.Famille.Facture + 40;
+                     Liste.Bs.Facture_Veille := Liste.Bs.Facture_Veille + 40;
+                     Liste.Bs.Facture_Semaine := Liste.Bs.Facture_Semaine + 40;
+                  END IF;
+               ELSIF Creneau = Aprem THEN
+                  IF A.Famille.Age_Enfants(1) IN 0..6 THEN
+                     A.Famille.Facture := A.Famille.Facture + 78;
+                     Liste.Bs.Facture_Veille := Liste.Bs.Facture_Veille + 78;
+                     Liste.Bs.Facture_Semaine := Liste.Bs.Facture_Semaine + 78;
+                  ELSIF A.Famille.Age_Enfants(1) IN 7..12 THEN
+                     A.Famille.Facture := A.Famille.Facture + 60;
+                     Liste.Bs.Facture_Veille := Liste.Bs.Facture_Veille + 60;
+                     Liste.Bs.Facture_Semaine := Liste.Bs.Facture_Semaine + 60;
+                  END IF;
+               ELSE
+                  IF A.Famille.Age_Enfants(1) IN 0..6 THEN
+                     A.Famille.Facture := A.Famille.Facture + 65;
+                     Liste.Bs.Facture_Veille := Liste.Bs.Facture_Veille + 65;
+                     Liste.Bs.Facture_Semaine := Liste.Bs.Facture_Semaine + 65;
+                  ELSIF A.Famille.Age_Enfants(1) IN 7..12 THEN
+                     A.Famille.Facture := A.Famille.Facture + 55;
+                     Liste.Bs.Facture_Veille := Liste.Bs.Facture_Veille + 55;
+                     Liste.Bs.Facture_Semaine := Liste.Bs.Facture_Semaine + 55;
+                  END IF;
+               END IF;
+               -- calcul du tarif pour les enfants supplémentaires s'il y en a
+               IF A.Famille.Nb_Enfants > 1 THEN
+                  FOR I IN 2..A.Famille.Nb_Enfants LOOP
+                     IF A.Famille.Age_Enfants(I) IN 0..6 THEN
+                        A.Famille.Facture := A.Famille.Facture + 3;
+                        Liste.Bs.Facture_Veille := Liste.Bs.Facture_Veille + 3;
+                        Liste.Bs.Facture_Semaine := Liste.Bs.Facture_Semaine + 3;
+                     ELSIF A.Famille.Age_Enfants(I) IN 7..12 THEN
+                        A.Famille.Facture := A.Famille.Facture + 2;
+                        Liste.Bs.Facture_Veille := Liste.Bs.Facture_Veille + 2;
+                        Liste.Bs.Facture_Semaine := Liste.Bs.Facture_Semaine + 2;
+                     END IF;
+                  END LOOP;
+               END IF;
+--               Put_Line("facture famille : "); Put(A.Famille.Facture); New_Line;
+--               Put_Line("facture veille"); Put(Liste.Bs.Nom); Put(Liste.Bs.Prenom1); Put(Liste.Bs.Facture_Veille); New_Line;
+--               Put_Line("facture semaine"); Put(Liste.Bs.Nom); Put(Liste.Bs.Prenom1); Put(Liste.Bs.Facture_Semaine); New_Line;
+            ELSE
+               Calcul(Liste,A.Fg,Nom_Fam,Creneau);
+               Calcul(Liste,A.Fd,Nom_Fam,Creneau);
+            END IF;
+         END IF;
+      END Calcul;
+
+   BEGIN
+      IF Liste /= NULL THEN
+         Liste.Bs.Facture_Veille := 0;
+         FOR I IN Jour..Jour LOOP
+            FOR J IN T_Creneau LOOP
+               --Put(T_Creneau'Image(J)); New_Line;
+               --Nom_Fam := Liste.Bs.P1(I,J);
+               IF Liste.Bs.P1(I,J) /= Chaine_Vide THEN
+                  Calcul(Liste,A,Liste.Bs.P1(I,J),J);
+               END IF;
+            END LOOP;
+         END LOOP;
+         Calcul_Facture(Liste.Suiv,A,Jour);
+      END IF;
+   END Calcul_Facture;
+
+END Gestion_Famille;

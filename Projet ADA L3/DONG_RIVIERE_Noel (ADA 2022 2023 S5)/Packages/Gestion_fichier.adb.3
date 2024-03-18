@@ -1,0 +1,8 @@
+WITH Ada.Sequential_IO,Gestion_activite,Gestion_KDO,Gestion_locataire,Gestion_Igloo,Gestion_activite,Gestion_elfes;
+Use Gestion_KDO,Gestion_locataire,Gestion_Igloo,Gestion_activite,Gestion_elfes;
+
+PACKAGE BODY Gestion_Fichier IS
+   ----------------------------------------------
+   PROCEDURE Enregistrer_Rag_Loc(Reg_Loc: OUT T_Locataire) IS
+      USE P_T_Registre_Locataire;
+

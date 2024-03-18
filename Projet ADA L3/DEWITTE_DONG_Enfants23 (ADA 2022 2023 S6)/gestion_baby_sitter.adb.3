@@ -1,0 +1,229 @@
+WITH Ada.Integer_Text_IO, Ada.Text_IO, Ada.Characters.Handling;
+USE Ada.Integer_Text_IO, Ada.Text_IO, Ada.Characters.Handling;
+
+PACKAGE BODY Gestion_Baby_Sitter IS
+
+   PROCEDURE Reset_Planning(Planning : IN OUT T_Planning) IS
+   BEGIN
+      FOR Jour IN T_Jour_Ouvre'First..T_Jour_Ouvre'Last LOOP
+         FOR Creneau IN T_Creneau'First..T_Creneau'Last LOOP
+            Planning(Jour, Creneau) := (OTHERS => ' ');
+         END LOOP;
+      END LOOP;
+   END Reset_Planning;
+
+   PROCEDURE Tri(Liste : IN T_Pteur) IS
+      Deb : T_Pteur := Liste; -- début de la zone restant à trier
+      P, Pmin : T_Pteur; -- pointeur de parcours et pointeur sur le min
+      Aux : T_Baby_Sitter;
+   BEGIN
+      WHILE Deb /= NULL AND THEN Deb.Suiv /= NULL LOOP
+         Pmin := Deb;
+         P := Deb.Suiv;
+         WHILE P /= NULL LOOP
+            IF P.Bs.Nom < Pmin.Bs.Nom THEN
+               Pmin := P;
+            ELSIF P.Bs.Nom = Pmin.Bs.Nom THEN
+               IF P.Bs.Prenom < Pmin.Bs.Prenom THEN
+                  Pmin := P;
+               END IF;
+            END IF;
+            P := P.Suiv;
+         END LOOP;
+         Aux := Deb.Bs;
+         Deb.Bs := Pmin.Bs;
+         Pmin.Bs := Aux;
+         Deb := Deb.Suiv;
+      END LOOP;
+   END Tri;
+
+   PROCEDURE Ajout_Bs(Bs : OUT T_Baby_Sitter; Liste : IN OUT T_Pteur) IS
+      Choix : Character;
+      K,J : Integer;
+      Chaine : T_Mot := (OTHERS => ' ');
+
+      FUNCTION Nom_Existe(Nom,Prenom : T_Mot; Liste : T_Pteur)RETURN Boolean IS
+      BEGIN
+         IF Liste /= NULL THEN
+            IF Liste.Bs.Nom = Nom AND THEN Liste.Bs.Prenom = Prenom THEN
+               RETURN(True);
+            ELSE
+               RETURN(Nom_Existe(Nom,Prenom,Liste.Suiv));
+            END IF;
+         END IF;
+         RETURN(False);
+      END Nom_Existe;
+
+   BEGIN
+      Reset_Planning(Bs.P1);
+      Reset_Planning(Bs.P2);
+      Put("Saisir le nom : ");
+      Ctrl_String(Bs.Nom);
+      Put("Saisir le prenom : ");
+      LOOP
+         BEGIN
+            Get_Line(Bs.Prenom,K);
+            Bs.Prenom := To_Lower(Bs.Prenom);
+            Bs.Prenom(1) := To_Upper(Bs.Prenom(1));
+            EXIT;
+         EXCEPTION
+            WHEN Constraint_Error =>
+               Put_Line("Erreur de saisie, recommencez");
+         END;
+      END LOOP;
+      IF Nom_Existe(Bs.Nom,Bs.Prenom,Liste) THEN
+         Put_line("Le nom saisi existe deja, vous pouvez : ");
+         Put_Line("1 - Abandonner la saisie");
+         Put_Line("2 - Ajouter un deuxieme prenom");
+         LOOP
+            Put("Votre choix : ");
+            Get(Choix); Skip_Line;
+            CASE Choix IS
+               WHEN '1'|'2' => EXIT;
+               WHEN OTHERS => Put_Line("Erreur, veuillez recommencer");
+            END CASE;
+         END LOOP;
+      END IF;
+      IF Choix = '2' THEN
+         Put("Saisir un 2eme prenom : ");
+         LOOP
+         BEGIN
+            Get_Line(Chaine,J);
+            Chaine := To_Lower(Chaine);
+            Chaine(1) := To_Upper(Chaine(1));
+            EXIT;
+         EXCEPTION
+            WHEN Constraint_Error =>
+               Put_Line("Erreur de saisie, recommencez");
+         END;
+         END LOOP;
+         Bs.Prenom(K+2..K+1+J) := Chaine(1..J);
+      END IF;
+      IF Nom_Existe(Bs.Nom,Bs.Prenom,Liste) = False OR ELSE Choix = '2' THEN
+         LOOP
+            Put("Saisir l'age (>= 16) : ");
+            Ctrl_Entier(Bs.Age);
+            EXIT WHEN Bs.Age > 15;
+            Put_Line("L'age saisi n'est pas correct, veuillez recommencer");
+         END LOOP;
+         Liste := NEW T_Cell'(Bs,Liste);
+         -- tri sur nom puis prénom ou insertion triée ??
+      END IF;
+   END Ajout_Bs;
+
+   PROCEDURE Visu_Bs(Liste : IN T_Pteur) IS
+   BEGIN
+      IF Liste /= NULL THEN
+         Put("Nom : "); Put(Liste.Bs.Nom); New_Line;
+         Put("Prenom(s) : "); Put(Liste.Bs.Prenom); New_Line;
+         Put("Age : "); Put(Liste.Bs.Age,2); New_Line; New_Line;
+         Visu_Bs(Liste.Suiv);
+      END IF;
+   END Visu_Bs;
+
+   PROCEDURE Demande_Depart_Bs(Liste : IN T_Pteur) IS
+      Nom,Prenom : T_Mot := (OTHERS => ' ');
+
+      FUNCTION Recherche_Bs(Nom,Prenom : T_Mot; Liste : T_Pteur) RETURN T_Pteur IS
+      BEGIN
+         IF Liste = NULL THEN
+            RETURN(NULL);
+         ELSIF Liste.Bs.Nom = Nom AND THEN Liste.Bs.Prenom = Prenom THEN
+            RETURN(Liste);
+         ELSE
+            RETURN(Recherche_Bs(Nom,Prenom,Liste.Suiv));
+         END IF;
+      END Recherche_Bs;
+
+   BEGIN
+      Put("Saisir le nom : ");
+      Ctrl_String(Nom);
+      Put("Saisir le/les prenom(s) :" );
+      Ctrl_String(Prenom);
+      IF Recherche_Bs(Nom,Prenom,Liste) = NULL THEN
+         Put_Line("Cette baby-sitter n'existe pas");
+      ELSIF Recherche_Bs(Nom,Prenom,Liste) = Liste THEN
+         IF Liste.Bs.Quitte = False THEN
+            Liste.Bs.Quitte := True;
+            Put_Line("Votre demande a bien ete enregistree");
+         ELSE
+            Put_Line("Vous avez deja fait une demande pour quitter");
+         END IF;
+      ELSE
+         Demande_Depart_Bs(Liste.Suiv);
+      END IF;
+   END Demande_Depart_Bs;
+
+
+   PROCEDURE Visu_P1(Liste : IN T_Pteur) IS
+   BEGIN
+      --Put_Line("Planning des baby-sitters pour la semaine en cours");
+      IF Liste /= NULL THEN
+         Put("Planning de : ");
+         Put(Liste.Bs.Prenom(1..30));
+         Put(Liste.Bs.Nom(1..20)); New_Line;
+         Put("       ");
+         FOR I IN T_Jour_Ouvre'First..T_Jour_Ouvre'Last LOOP
+            Put(T_Jour_Ouvre'Image(I)); Put("     ");
+         END LOOP;
+         New_Line;
+         FOR J IN T_Creneau'First..T_Creneau'Last LOOP
+            Put(T_Creneau'Image(J)); Put("  ");
+            FOR I IN T_Jour_Ouvre'First..T_Jour_Ouvre'Last LOOP
+               IF Liste.Bs.P1(I,J)(1..3) = "   " THEN
+                  Put("Rien      ");
+               ELSE
+                  Put(Liste.Bs.P1(I,J));
+               END IF;
+            END LOOP;
+            New_Line;
+         END LOOP;
+         New_Line;
+         Visu_P1(Liste.Suiv);
+      END IF;
+   END Visu_P1;
+
+
+   PROCEDURE Visu_P2(Liste : IN T_Pteur) IS
+   BEGIN
+      --Put_Line("Planning des baby-sitters pour la semaine a venir");
+      IF Liste /= NULL THEN
+         Put("Planning de : ");
+         Put(Liste.Bs.Prenom(1..30));
+         Put(Liste.Bs.Nom(1..20)); New_Line;
+         Put("       ");
+         FOR I IN T_Jour_Ouvre'First..T_Jour_Ouvre'Last LOOP
+            Put(T_Jour_Ouvre'Image(I)); Put("     ");
+         END LOOP;
+         New_Line;
+         FOR J IN T_Creneau'First..T_Creneau'Last LOOP
+            Put(T_Creneau'Image(J)); Put("  ");
+            FOR I IN T_Jour_Ouvre'First..T_Jour_Ouvre'Last LOOP
+               IF Liste.Bs.P2(I,J)(1..3) = "   " THEN
+                  Put("Rien      ");
+               ELSE
+                  Put(Liste.Bs.P2(I,J));
+               END IF;
+            END LOOP;
+            New_Line;
+         END LOOP;
+         New_Line;
+         Visu_P2(Liste.Suiv);
+      END IF;
+   END Visu_P2;
+
+   PROCEDURE Visu_Planning_Bs(Liste : IN T_Pteur) IS
+      Nom,Prenom,Prenom2 : T_Mot := (OTHERS => ' ');
+   BEGIN
+      Put("Saisir le nom de la baby-sitter : ");
+      Ctrl_String(Nom);
+      Put("Saisir le prénom : ");
+      Ctrl_String(Prenom);
+      Put("Saisir le deuxieme prénom (0 s'il n'y en a pas) : ");
+      Ctrl_String(Prenom2);
+
+   END Visu_Planning_Bs;
+
+
+END Gestion_Baby_Sitter;
+

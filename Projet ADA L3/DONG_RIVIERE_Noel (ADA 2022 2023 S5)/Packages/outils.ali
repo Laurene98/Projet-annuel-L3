@@ -1,0 +1,28 @@
+V "GNAT Lib v2017"
+A -gnatwu
+A -g
+A -gnato
+A -gnatwa
+A -gnat05
+A -g
+P ZX
+
+RN
+RV SPARK_05
+
+U outils%s		outils.ads		4d20150a NE OO PK KU
+
+D outils.ads		20221211090410 4d20150a outils%s
+D system.ads		20170516105954 32a08138 system%s
+X 1 outils.ads
+2K9*Outils 9l5 9e11
+4A12*T_Mot{string}<integer>
+5E9*T_Semaine 5e79
+5n23*Lundi{5E9}
+5n30*Mardi{5E9}
+5n37*Mercredi{5E9}
+5n47*Jeudi{5E9}
+5n54*Vendredi{5E9}
+5n63*Samedi{5E9}
+5n70*Dimanche{5E9}
+

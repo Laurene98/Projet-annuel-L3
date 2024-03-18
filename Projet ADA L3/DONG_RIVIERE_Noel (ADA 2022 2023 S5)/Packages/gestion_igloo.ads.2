@@ -1,0 +1,18 @@
+
+
+
+
+
+PACKAGE Gestion_Igloo IS
+
+NBI : constant integer := 7;
+Type T_Info_igloo is record
+Id_Igloo : integer ;
+Capacite : integer ;
+Liste_locataires : T_locataire ;
+Nb_Locataire: integer;
+End record ;
+TYPE T_Igloo IS ARRAY (Integer RANGE 1..NBI) OF T_Info_Igloo;
+
+END Gestion_Igloo;
+

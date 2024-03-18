@@ -1,0 +1,72 @@
+WITH Ada.Text_IO,Ada.Integer_Text_IO, outils,Ada.Characters.Handling,Gestion_KDO,Gestion_Activites,Gestion_Elfes,Gestion_Locataire;
+USE Ada.Text_IO,Ada.Integer_Text_IO, outils,Ada.Characters.Handling,Gestion_KDO,Gestion_Activites,Gestion_Elfes,Gestion_Locataire;
+
+
+PACKAGE BODY Outils IS
+
+PROCEDURE Gestion_Mots (Mot : OUT T_Mot) IS
+
+BEGIN
+Mot := (OTHERS => ' ');
+
+
+
+      FOR I IN Mot'range LOOP
+
+   LOOP
+         Get (Mot(i));
+         Mot(i):= To_Upper (Mot(i));
+         CASE Mot(i) IS
+         WHEN 'A'..'Z'|'a'..'z' => Mot(i) := To_Upper (Mot(i)); EXIT;
+         WHEN OTHERS => NULL;
+         END CASE;
+
+      END LOOP;
+
+Skip_Line;
+      EXIT;
+
+      END LOOP;
+
+
+END Gestion_Mots;
+
+END Outils;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--      FOR I IN Mot'range LOOP
+
+--   LOOP
+--         Get (Mot(i));
+--         Mot(i):= To_Upper (Mot(i));
+--         CASE Mot(i) IS
+--         WHEN 'A'..'Z'|'a'..'z' => Mot(i) := To_Upper (Mot(i)); EXIT;
+--         WHEN OTHERS => NULL;
+--         END CASE;
+
+--      END LOOP;
+
+--Skip_Line;
+--      EXIT;
+
+--      END LOOP;
+
+
+--END Gestion_Mots;
+
+--END Outils;

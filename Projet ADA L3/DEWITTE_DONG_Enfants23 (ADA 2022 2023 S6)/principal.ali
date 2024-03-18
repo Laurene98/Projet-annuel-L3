@@ -1,0 +1,151 @@
+V "GNAT Lib v2017"
+M P W=b
+A -gnatwu
+A -g
+A -gnato
+A -gnatwa
+A -gnat05
+A -mtune=generic
+A -march=pentium4
+P ZX
+
+RN
+RV NO_IO
+RV NO_DEFAULT_INITIALIZATION
+RV SPARK_05
+
+U principal%b		principal.adb		200faa53 NE OO SU KU
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W gestion_baby_sitter%s	gestion_baby_sitter.adb	gestion_baby_sitter.ali
+W gestion_famille%s	gestion_famille.adb	gestion_famille.ali
+W gestion_garde%s	gestion_garde.adb	gestion_garde.ali
+W initialisation%s	initialisation.adb	initialisation.ali
+W interfaces%s		interfac.ads		interfac.ali
+W outils%s		outils.adb		outils.ali
+W system%s		system.ads		system.ali
+W system.img_enum_new%s	s-imenne.adb		s-imenne.ali
+
+D ada.ads		20170516105950 76789da1 ada%s
+D a-except.ads		20170516105952 291912d5 ada.exceptions%s
+D a-inteio.ads		20170516105954 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20170516105948 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20170516105952 119b8fb3 ada.streams%s
+D a-tags.ads		20170516105954 d3a89129 ada.tags%s
+D a-textio.ads		20170516105954 386df5d4 ada.text_io%s
+D a-tiinio.ads		20170516105950 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20170516105954 31484697 ada.unchecked_conversion%s
+D gestion_baby_sitter.ads  20230423070914 b6cc4147 gestion_baby_sitter%s
+D gestion_famille.ads	20230422202748 a1c20f75 gestion_famille%s
+D gestion_garde.ads	20230423113954 7c1178b6 gestion_garde%s
+D initialisation.ads	20230322124734 f40b83ce initialisation%s
+D interfac.ads		20170516105950 5ab55268 interfaces%s
+D i-cstrea.ads		20170516105950 e53d8b8e interfaces.c_streams%s
+D outils.ads		20230422123214 bd0e0ed2 outils%s
+D principal.adb		20230423145202 cc336dbb principal%b
+D system.ads		20170516105954 32a08138 system%s
+D s-crtl.ads		20170516105948 0ebbdb71 system.crtl%s
+D s-exctab.ads		20170516105954 54135002 system.exception_table%s
+D s-ficobl.ads		20170516105956 078245e4 system.file_control_block%s
+D s-imenne.ads		20170516105950 614c06c0 system.img_enum_new%s
+D s-parame.ads		20170516105954 7e2a0d7f system.parameters%s
+D s-soflin.ads		20170516105950 14e1eb6c system.soft_links%s
+D s-stache.ads		20170516105954 a37c21ec system.stack_checking%s
+D s-stalib.ads		20170516105954 09bd3940 system.standard_library%s
+D s-stoele.ads		20170516105956 2dc34a04 system.storage_elements%s
+D s-traent.ads		20170516105950 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20170516105952 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20170516105954 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 17|1r6 1r18 2r5 2r17
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[8|46] 17|1w22 2r21
+X 7 a-textio.ads
+49K13*Text_IO 471e16 17|1w10 2r9
+166U14*New_Line 17|21s4 26s7 27s7 31s10 33s10 38s10 40s10 48s10 50s10 52s10
+. 54s10 57s10 72s7 75s7 76s7 87s62 95s16 103s16 111s22 113s22 114s22 117s22
+. 119s22 120s22 123s22 125s22 126s22 129s22 131s22 132s22 135s22 137s22 138s22
+. 141s22 143s22 144s22 151s13 152s13 160s16 164s16 177s22 178s22 187s13 188s13
+. 196s16 200s16 209s22 210s22 217s22 218s22 225s13 226s13 235s16 239s16 247s22
+. 248s22 251s22 252s22 259s13 260s13 267s16 271s16 279s22 280s22 283s22 284s22
+. 291s13 292s13
+242U14*Put 17|24s7 25s7 73s7 105s16 166s16 202s16 214s22 214s42 215s22 241s16
+263U14*Put_Line 17|20s4 30s10 37s10 47s10 51s10 55s10 65s7 66s7 67s7 68s7
+. 69s7 70s7 71s7 87s16 94s16 96s16 97s16 98s16 99s16 100s16 101s16 102s16
+. 110s22 116s22 122s22 128s22 134s22 140s22 148s22 159s16 161s16 162s16 163s16
+. 175s25 184s22 195s16 197s16 198s16 199s16 214s73 216s59 222s22 234s16 236s16
+. 237s16 238s16 256s22 266s16 268s16 269s16 270s16 273s16 288s22
+X 8 a-tiinio.ads
+66U14*Put 17|216s22[3|18]
+X 10 gestion_baby_sitter.ads
+4K9*Gestion_Baby_Sitter 66e24 17|1w39 2r38
+11R9*T_Baby_Sitter 19e14 17|10r9
+22P9*T_Pteur(21R9) 17|8r12
+31U14*Ajout_Bs 17|172s25
+33U14*Demande_Depart_Bs 17|180s22
+35U14*Supp_Bs 17|56s10
+39U14*Visu_Bs 17|112s22
+41U14*Visu_Facture_Veille 17|32s10
+43U14*Visu_Facture_Bs 17|49s10
+45U14*Visu_P1 17|124s22
+47U14*Visu_P2 17|130s22
+49U14*Visu_Planning_Bs 17|136s22
+51U14*Visu_Garde_Jour 17|39s10
+53U14*Maj_Planning 17|86s16
+55U14*Tri 17|15s4 173s25
+59U14*Visu_Garde 17|142s22
+61U14*Compte_Creneaux 17|61s10
+X 11 gestion_famille.ads
+4K9*Gestion_Famille 36e20 17|1w60 2r59
+8R9*T_Famille 14e14 17|11r14
+9a7*Nom{16|3A12} 17|214r67
+12i7*Facture{integer} 17|216r47
+18P9*T_Arbre(17R9) 17|9r21
+20r7*Famille{8R9} 17|214m59 216m39
+24U14*New_Fam 17|207s22
+25U14*Insert_Fam 17|208s22
+26U14*Visu_Fam 17|118s22
+31U14*Visu_Facture_Fam 17|53s10
+33U14*Calcul_Facture 17|43s10
+X 12 gestion_garde.ads
+4K9*Gestion_Garde 14e18 17|1w77 2r76
+6U14*Demande_Garde 17|246s22
+7U14*Annule_Garde 17|250s22
+8U14*Supp_Fam 17|213s22
+X 13 initialisation.ads
+4K9*Initialisation 9e19 17|1w100 2r99
+6U14*Init_Bs 17|14s4
+7U14*Init_Famille 17|16s4
+X 16 outils.ads
+1K9*Outils 11e11 17|1w92 2r91
+3A12*T_Mot{string}<integer>
+5E9*T_Semaine 5e80 17|7r11 25r11
+5n22*Lundi{5E9} 17|7r24 36r18 60r17 85r23
+5n29*Mardi{5E9} 17|29r18
+5n63*Samedi{5E9} 17|36r25
+5n71*Dimanche{5E9} 17|29r25 46r17 171r32
+7U14*Ctrl_Entier 17|74s7 106s16 167s16 203s16 242s16 274s16
+9U14*Jour_Suiv 17|84s13
+X 17 principal.adb
+5U11*Principal 5b11 303l5 303t14
+6i4 Mon_Choix{integer} 74m19 74r19 80r12
+6i14 Visual{integer} 106m28 106r28 108r21
+6i21 Bab{integer} 167m28 167r28 169r21
+6i25 Fam{integer} 203m28 203r28 205r21
+6i29 Ins{integer} 242m28 242r28 244r21
+6i33 Sauv{integer} 274m28 274r28 276r21
+6i38 K{integer} 207m38 208r41
+7e4 Jour{16|5E9} 25r27 29r10 36r10 39r32 43r33 46r10 60r10 84m23 84r23 85r16
+. 171r25 180r47 213r39 250r43
+8p4 Liste{10|22P9} 14m12 14r12 15r8 32r30 39r26 43r25 49r26 53r30 56m19 56r19
+. 61r26 86r29 112r30 124r30 130r30 136r39 142r33 172m37 172r37 173r29 180r40
+. 213r31 246r36 250r35
+9p4 A{11|18P9} 16m17 16r17 43r31 53r27 118r31 208m43 208r43 213m37 213r37
+. 246r42 250r41
+9p6 Pointeur_Fam{11|18P9} 213m44 213r44 214r46 216r26
+10r4 Bs{10|11R9} 172m34
+11r4 Famille{11|8R9} 207m30 208m33 208r33
+12i4 Fac{integer} 53m37
+

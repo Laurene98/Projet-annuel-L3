@@ -1,0 +1,51 @@
+WITH Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO,Initial,Gestion_KDO,Gestion_activites;
+USE Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO,Initial,Gestion_KDO,Gestion_activites;
+
+PACKAGE BODY Initial IS
+
+
+   ----------------------------- Stock kdo initial -----------------------------------
+
+   PROCEDURE Init_Stock (KDO: IN OUT T_KDO; Nbr_Stock : OUT T_Gestion_KDO) IS
+   BEGIN
+      Nbr_Stock(Boissons) := 6;
+      Nbr_Stock(Biscuits) := 4;
+      Nbr_Stock(Chocolats) := 8;
+      Nbr_Stock(Fruits_Confits) := 5;
+   END Init_Stock;
+
+   ----------------------- Initialisation disponibilité activité -------------------------
+
+   PROCEDURE Disponibilite (Nbr_Place: IN OUT T_Gestion_Activite) IS
+   BEGIN
+      Nbr_Place := ((8, 6, 8, 5, 8),
+                    (8, 0, 7, 8, 8),
+                    (0, 8, 5, 8, 8),
+                    (5, 6, 7, 3, 8),
+                    (8, 8, 1, 8, 8),
+                    (5, 7, 8, 6, 7),
+                    (8, 8, 8, 8, 0),
+                    (8, 8, 8, 6, 5));
+
+   END Disponibilite;
+
+
+   ------------------------- Initialisation données elfes ---------------------------------
+
+
+
+
+
+   --------------------- Initilisation données locataires ---------------------------------
+
+
+
+
+
+   ----------------------- Initialisation données igloo ------------------------------------
+
+
+
+
+
+END Initial;

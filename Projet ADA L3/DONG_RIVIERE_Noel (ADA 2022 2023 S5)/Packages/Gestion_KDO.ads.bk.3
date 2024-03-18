@@ -1,0 +1,18 @@
+PACKAGE Gestion_KDO IS
+
+   TYPE T_KDO IS (Boissons, Biscuits, Chocolats, Fruits_Confits);
+   TYPE T_Gestion_KDO IS ARRAY (T_KDO) OF Integer;
+
+
+   PROCEDURE Affichage_Stock (Nbr_Stock : IN T_Gestion_KDO);
+   PROCEDURE Init_Stock (Nbr_Stock : OUT T_Gestion_KDO);
+   PROCEDURE Distribution_KDO (KDO_Tirage: IN OUT T_KDO; Nbr_Stock : IN OUT T_Gestion_KDO);
+   PROCEDURE Reassort (Nbr_Stock : IN OUT T_Gestion_KDO);
+   PROCEDURE Stat_KDO (KDO_Tirage: IN T_KDO; Bilan_Kdo : IN OUT T_Gestion_KDO);
+   PROCEDURE Affic_Stat_KDO  (Bilan_Kdo : IN T_Gestion_KDO);
+--   PROCEDURE Test_S (KDO: IN OUT T_KDO; Nbr_Stock : OUT T_Gestion_KDO);
+
+END Gestion_KDO;
+
+
+

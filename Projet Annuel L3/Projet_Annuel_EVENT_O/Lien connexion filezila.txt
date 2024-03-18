@@ -1,0 +1,6 @@
+Nom d’hôte : 
+10.16.140.38
+Identifiant et mot de passe de l’ENT
+Port : 22
+
+Pour la page de connexion : http://10.16.140.38/aboneham/EVENT_O/connexion/connexion.html

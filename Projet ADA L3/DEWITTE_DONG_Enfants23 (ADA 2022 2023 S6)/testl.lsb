@@ -1,0 +1,99 @@
+
+GNAT GPL 2017 (20170515-63)
+Copyright 1992-2017, Free Software Foundation, Inc.
+
+
+Compiling: c:/users/laurn/dropbox/dewitt~1/testl.adb
+Source file time stamp: 2023-03-23 14:41:40
+Compiled at: 2023-03-23 15:41:45
+
+     1. WITH Ada.Integer_Text_IO, Ada.Text_IO, Outils, Gestion_Baby_Sitter, Gestion_Famille, Initialisation;
+     2. USE Ada.Integer_Text_IO, Ada.Text_IO, Outils, Gestion_Baby_Sitter, Gestion_Famille, Initialisation;
+     3.
+     4. PROCEDURE Testl IS
+     5.    Jour : T_Semaine := Mercredi;
+           |
+        >>> warning: variable "Jour" is not referenced
+
+     6.    Liste : T_Pteur;
+     7.    A : T_Arbre;
+     8.    Famille : T_Famille;
+     9.    K : Integer;
+           |
+        >>> warning: variable "K" is never read and never assigned
+
+    10.    Bs : T_Baby_Sitter;
+           |
+        >>> warning: variable "Bs" is never read and never assigned
+
+    11.    N: Integer;
+           |
+        >>> warning: variable "N" is never read and never assigned
+
+    12.    Age_Enfants : T_Age_Enf;
+           |
+        >>> warning: variable "Age_Enfants" is never read and never assigned
+
+    13.    Fac, M: Integer;
+           |
+        >>> warning: variable "Fac" is never read and never assigned
+
+    14.    Nom : T_mot;
+           |
+        >>> warning: variable "Nom" is never read and never assigned
+
+    15.
+    16.
+    17. BEGIN
+    18.    Init_Bs(Liste);
+    19.    Init_Famille(A);
+    20. --   Jour_Suiv(Jour);
+    21. --   Put(T_Semaine'Image(Jour)); New_Line;
+    22.
+    23. --   Ajout_Bs(Bs,Liste);
+    24. --   Ajout_Bs(Bs,Liste);
+    25.
+    26. --   Init_Bs(Liste);
+    27. --   Init_Famille(A);
+    28.
+    29. --   Visu_Bs(Liste); New_Line;
+    30. --   Tri(Liste); New_Line;
+    31. --   Visu_Bs(Liste); New_Line;
+    32.
+    33. --   Visu_P1(Liste);
+    34. --   Visu_P2(Liste);
+    35.
+    36. --   New_Fam(Famille,K);
+    37. --   Insert_Fam(Famille,K,A);
+    38. --   New_Fam(Famille,K);
+    39. --   Insert_Fam(Famille,K,A);
+    40.
+    41.    --Nom(1..10) := "Montalbano";
+    42.    Visu_Fam(A);
+    43.    Visu_P1(Liste);
+    44.
+    45. --   Cal_Facture_Fam (Famille, Fac);
+    46. --   New_Line;
+    47. --   Put (fac);
+    48. Famille.nom(1..10) := "Montalbano";
+    49.
+    50.    M := 0;
+    51.    WHILE Liste /= NULL LOOP
+    52.       FOR I IN T_Jour_Ouvre'RANGE LOOP
+    53.          IF Liste.Bs.P1(I,Matin) = Famille.nom THEN
+    54.             M := M + 1;
+    55.          END IF;
+    56.       END LOOP;
+    57.       Liste:= Liste.Suiv;
+    58.    END LOOP;
+    59.
+    60.    New_Line;
+    61.    Put (M);
+    62.
+    63.
+    64.
+    65. END Testl;
+    66.
+    67.
+
+ 67 lines: No errors, 7 warnings

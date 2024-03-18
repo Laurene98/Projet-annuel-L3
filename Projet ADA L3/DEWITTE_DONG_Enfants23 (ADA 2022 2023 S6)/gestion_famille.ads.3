@@ -1,0 +1,33 @@
+WITH Ada.Integer_Text_IO, Ada.Text_IO, Outils;
+USE Ada.Integer_Text_IO, Ada.Text_IO, Outils;
+
+PACKAGE Gestion_Famille IS
+   -- SUBTYPE T_Range_Age IS Integer RANGE 0..12;
+   -- TYPE T_Age_Enf IS ARRAY(Integer RANGE 1..8) OF T_Range_Age;
+   TYPE T_Age_Enf IS ARRAY(Integer RANGE 1..8) OF Integer RANGE 0..12;
+
+   -- TYPE T_Facture IS ARRAY(Integer RANGE 1..Taille_Arbre) OF Integer;
+
+   TYPE T_Famille IS RECORD
+      Nom : T_Mot;
+      Enfants : T_Age_Enf;
+
+      -- Facture : T_Facture := (OTHERS => 0);
+      -- Last_Bs : T_Pteur := NULL; ????
+   END RECORD;
+
+   -- ABR trié par nom
+   TYPE T_Noeud;
+   TYPE T_Arbre IS ACCESS T_Noeud;
+   TYPE T_Noeud IS RECORD
+      Famille : T_Famille;
+      Fg,Fd : T_Arbre;
+   END RECORD;
+
+   PROCEDURE Ajout_Fam(Famille : OUT T_Famille; Arbre : IN OUT T_Arbre);
+   FUNCTION Taille_Arbre(Arbre : T_Arbre) RETURN Integer;
+   PROCEDURE Visu_Fam(Arbre : IN T_Arbre);
+   -- PROCEDURE Visu_Facture(Facture : IN T_Facture);
+
+
+END Gestion_Famille;

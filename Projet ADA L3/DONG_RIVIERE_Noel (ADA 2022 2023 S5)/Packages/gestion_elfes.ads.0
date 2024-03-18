@@ -1,0 +1,20 @@
+WITH Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Outils;
+   USE Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Outils;
+
+
+PACKAGE Gestion_Elfes IS
+
+   TYPE T_Nbrper_Elfes IS ARRAY (T_Semaine) OF Integer;
+
+NBE : constant integer := 8;
+Type T_info_elfes is record
+Nom_elfes : T_Mot;
+Activite : T_activite ;
+Nbr_pers_jour : T_Nbrper_Elfes ;
+END RECORD ;
+
+Type T_Elfes is array (Integer range 1..NBE) of T_info_elfes;
+
+
+end gestion_elfes;
+----

@@ -1,0 +1,133 @@
+WITH Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO, Gestion_KDO;
+USE Ada.Text_IO,Ada.Integer_Text_IO,Ada.Float_Text_IO,Gestion_KDO;
+
+PACKAGE BODY Gestion_KDO IS
+
+   ---------------------- Afficher le stock des kdo ---------------------------------------
+
+   PROCEDURE Affichage_Stock (KDO: IN OUT T_KDO; Nbr_Stock : OUT T_Gestion_KDO) IS
+      BEGIN
+          FOR i IN T_gestion_KDO'RANGE LOOP
+            FOR J IN T_Gestion_Kdo'RANGE LOOP
+               Put ("Le stock de");
+               Put (T_Kdo'image(I));
+               Put ("est");
+               Put (Nbr_Stock(J));
+               New_Line;
+            END LOOP;
+            END LOOP;
+      END Affichage_Stock;
+
+
+   --------------------------- Initialiser le stock de kdo ------------------------------------
+
+
+   PROCEDURE Init_Stock (KDO: IN OUT T_KDO; Nbr_Stock : OUT T_Gestion_KDO) IS
+   BEGIN
+      Put_Line ("Veuillez saisir le stock initial.");
+         FOR I IN T_Kdo'RANGE LOOP
+         Put ("Stock de");
+         Put (T_Kdo'image(I));
+         Put (":"); new_line;
+            FOR J IN T_Gestion_Kdo'RANGE LOOP
+               Get (Nbr_Stock(J)); Skip_Line;
+            END LOOP;
+         END LOOP;
+   END Init_Stock;
+
+
+
+   ------------------------ Distribuer les cadeaux ----------------------------------------
+--A FINIR
+   PROCEDURE Distribution_KDO (KDO_Tirage: IN OUT T_KDO; Nbr_Stock : IN OUT T_Gestion_KDO; )
+
+      TYPE Proba IS ARRAY (T_Gestion_KDO) OF Integer RANGE 0..100;
+      Total : Integer;
+      KDO_Tirage : T_KDO;
+      P: Proba;
+      TYPE N IS RANGE 0..100;
+      Pr1, Pr2, Pr3, Pr4 : Integer;
+
+
+   BEGIN
+      Total := 0;
+      P := 0.0;
+      FOR I IN T_Gestion_KDO'RANGE LOOP
+         Total := Total + (T_Gestion_KDO.Nbr_Stock'Value(I));
+      END LOOP;
+
+      FOR I IN T_Gestion_Kdo'RANGE LOOP
+         P(I) := (Nbr_Stock(I) / Total) * 100;
+
+         IF P1 < P2 AND P1 < P3 AND P1 <P4 THEN
+            Pr1 := P1;
+         ELSIF P2 < P1 AND P2 < P3 AND P2 < P4 THEN
+            Pr1 := P2;
+            elsif P3 < P2
+      END LOOP;
+   END;
+
+   BEGIN
+
+
+
+--   BEGIN
+--      Initialise (0,100);
+--      N := Random;
+
+
+   END Distribution_KDO;
+
+
+
+
+
+   --------------------- Réapprovisionner les kdo ------------------------------------
+
+   PROCEDURE Reassort (Nbr_stock : in OUT T_Gestion_KDO) IS
+
+    Ajout_Stock:integer;
+
+   BEGIN
+      Put_line ("Veuillez saisir le stock de reassort.");
+      FOR I IN T_Gestion_Kdo'RANGE LOOP
+         Put ("Reassort de");
+         Put (T_KDO'image(I));
+         Put (":"); new_line;
+         Get (Ajout_stock); Skip_Line;
+         Nbr_stock(I):= Nbr_stock(I) + Ajout_stock;
+      END LOOP;
+
+   END Reassort;
+
+
+   ------------------- Bilan des kdo -----------------------------------
+   PROCEDURE Stat_KDO IS
+     begin
+     put (" ");
+      end stat_kdo; -- le nbr de KDO distribues, afficher la stat
+
+
+
+END Gestion_Kdo;
+
+
+--   Nbr_Stock: t_gestion_kdo;
+--   cases:boolean;
+--   BEGIN
+--      Cases:=FALSE;
+
+--         FOR I IN T_KDO'RANGE LOOP
+
+--            LOOP
+
+--         Put ("combien avez vous de Boisson"); Nbr_Stock(i).Boisson:=i; Cases:=True;
+--         Put ("combien avez vous de Biscuits");Nbr_Stock(i).Biscuit:=i; Cases:=True;
+--         Put ("combien avez vous de Chocolat");Nbr_Stock(i).Chocolat:=i;Cases:=True;
+--         Put ("combien avez vous de Fruits confits");Nbr_Stock(i).Fruits_Confits:=i;Cases:=True;
+
+--        exit when cases=false; put ("toutes les cases ne sont pas remplies, veuilez recommencer");
+--            Skip_Line;
+--         END LOOP; END LOOP;
+
+
